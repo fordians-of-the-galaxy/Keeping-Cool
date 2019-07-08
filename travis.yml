@@ -12,13 +12,13 @@ android:
 #  - android-22
 #  - sys-img-armeabi-v7a-android-22
 
-before_install:
-  - openssl aes-256-cbc -K $encrypted_17819ee4ac47_key -iv $encrypted_17819ee4ac47_iv
-    -in google-services.json.enc -out ./app/google-services.json -d
-
-# DISABLE the following to run orchestrated tests:
-script:
-  - ./gradlew build check
+#before_install:
+#  - openssl aes-256-cbc -K $encrypted_17819ee4ac47_key -iv $encrypted_17819ee4ac47_iv
+#    -in google-services.json.enc -out ./app/google-services.json -d
+#
+## DISABLE the following to run orchestrated tests:
+#script:
+#  - ./gradlew build check
 
 # Emulator Management: Create, Start and Wait
 
@@ -29,3 +29,14 @@ script:
 #  - emulator -avd test -no-audio -no-window &
 #  - android-wait-for-emulator
 #  - adb shell input keyevent 82 &
+
+
+
+
+#why did pete remove this??????
+#android:
+#  components:
+#    # Specify at least one system image,
+#    # if you need to run emulator(s) during your tests
+#    - sys-img-x86-android-26
+#    - sys-img-armeabi-v7a-android-17
