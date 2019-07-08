@@ -12,4 +12,4 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_52f4ac1c9c49_key -iv $encrypted_52f4ac1c9c49_iv
   -in google-services.json.enc -out ./app/google-services.json -d
 script:
-- "./gradlew build check"
+- ./gradlew build check
