@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "199549849310",
+    "firebase_url": "https://keepingcool-7a654.firebaseio.com",
+    "project_id": "keepingcool-7a654",
+    "storage_bucket": "keepingcool-7a654.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199549849310:android:b831baee2461468b",
+        "android_client_info": {
+          "package_name": "com.fotg.keepingcool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199549849310-mg7fgijnpjdacca3f8f1avuklfa6b0dp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAp5bm0DQpQHnXKZwppGPUlrIAJe_JRcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199549849310-mg7fgijnpjdacca3f8f1avuklfa6b0dp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
