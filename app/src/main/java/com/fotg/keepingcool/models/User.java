@@ -12,7 +12,7 @@ public class User {
         return name;
     }
 
-//    public User() {}
+    public User() {}
 
     public User(String n) {
         name = n;
