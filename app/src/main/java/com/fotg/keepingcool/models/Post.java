@@ -8,6 +8,7 @@ public class Post implements Serializable {
 
     private String body;
     private Date created;
+    private Tags tags;
     private String uid;
     private int numberOfLikes;
     private String postId;
@@ -33,7 +34,6 @@ public class Post implements Serializable {
 
     public void setUid(String id) { uid = id; }
 
-
     public String getBody() {
         return body;
     }
@@ -50,7 +50,19 @@ public class Post implements Serializable {
         created = time;
     }
 
+    public Tags getTags() { return tags; }
+
+    public void setTags(Tags filterChips) { tags = filterChips; }
+
     public Post() {}
+
+    public Post(String b, Date time, Tags filterChips, String id) {
+
+        body = b;
+        created = time;
+        tags = filterChips;
+        uid = id;
+    }
 
     public Post(String b, Date time, String id) {
 
