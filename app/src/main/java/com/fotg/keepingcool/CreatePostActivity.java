@@ -28,7 +28,10 @@ public class CreatePostActivity extends ToolbarActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ChipGroup filterChipGroup = findViewById(R.id.chipGroup);
+        EditText body = findViewById(R.id.postBody);
+        Tags tags = new Tags();
+        Date currentDateTime = new Date();
+
         Chip filterChip_fashion = findViewById(R.id.chip_fashion);
         Chip filterChip_waste = findViewById(R.id.chip_waste);
         Chip filterChip_oceans = findViewById(R.id.chip_oceans);
@@ -39,10 +42,6 @@ public class CreatePostActivity extends ToolbarActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference postRef = database.getReference("/posts");
         String key = postRef.child("posts").push().getKey();
-
-        EditText body = findViewById(R.id.postBody);
-        Tags tags = new Tags();
-        Date currentDateTime = new Date();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         filterChip_fashion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
