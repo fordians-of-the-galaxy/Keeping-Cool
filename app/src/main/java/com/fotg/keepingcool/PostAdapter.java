@@ -60,9 +60,9 @@ public class PostAdapter extends BaseAdapter {
         TextView timeTextView = v.findViewById(R.id.timeView);
         TextView bodyTextView = v.findViewById(R.id.bodyView);
         TextView usernameTextView = v.findViewById(R.id.usernameView);
-        TextView likesDisplay = v.findViewById(R.id.likesText);
+        TextView likesDisplay = v.findViewById(R.id.upvotesText);
 
-        AppCompatImageButton likeButton = v.findViewById(R.id.likeButton);
+        //AppCompatImageButton likeButton = v.findViewById(R.id.likeButton);
         AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
         AppCompatImageButton editButton = v.findViewById(R.id.editButton);
 
@@ -94,12 +94,12 @@ public class PostAdapter extends BaseAdapter {
 
         }
 
-        likeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                postRef.child(postId).child("numberOfLikes").setValue(numberOfLikes + 1);
-            }
-        });
+//        likeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                postRef.child(postId).child("numberOfLikes").setValue(numberOfLikes + 1);
+//            }
+//        });
 
         likesDisplay.setText(numberOfLikes + " people like this");
 
