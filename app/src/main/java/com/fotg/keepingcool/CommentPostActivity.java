@@ -47,29 +47,7 @@ public class CommentPostActivity extends ToolbarActivity {
                 DatabaseReference myRef = db.getReference("/posts");
 
 
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot post: dataSnapshot.getChildren()){
-
-                            if(post.child(postId).hasChild("comments")) {
-
-                                myRef.child(postId).child("comment2").setValue(comment.getText().toString());
-
-                            } else {
-
-                                myRef.child(postId).child("comments").setValue(comment.getText().toString());
-
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                myRef.child(postId).child("comments").push().setValue(comment.getText().toString());
 
 
                     Intent showListPostsActivity = new Intent(getApplicationContext(), ListPostsActivity.class);
