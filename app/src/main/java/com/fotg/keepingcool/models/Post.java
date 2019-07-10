@@ -11,6 +11,7 @@ public class Post implements Serializable {
     private String uid;
     private int numberOfLikes;
     private String postId;
+    private String comment;
 
 
     public int getNumberOfLikes() {
@@ -42,6 +43,13 @@ public class Post implements Serializable {
         body = b;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String c) {comment = c;
+    }
+
     public Date getTime() {
         return created;
     }
@@ -52,11 +60,13 @@ public class Post implements Serializable {
 
     public Post() {}
 
-    public Post(String b, Date time, String id) {
+    public Post(String b, Date time, String id, String c) {
 
         body = b;
         created = time;
         uid = id;
+        comment = c;
+
     }
 
 }

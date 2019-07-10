@@ -13,4 +13,6 @@
         <string name="post_delete_button">Delete</string>
         <string name="messenger">Messenger</string>
         <string name="numberOfLikes">No one likes this</string>
+        <string name="comment_button">Post Comment</string>
+        <string name="title_activity_comment_post">Create post</string>
 </resources>

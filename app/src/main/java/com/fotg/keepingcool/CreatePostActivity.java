@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -30,6 +31,7 @@ public class CreatePostActivity extends ToolbarActivity {
             public void onClick(View v) {
 
                 EditText body = findViewById(R.id.postBody);
+                TextView comment = findViewById(R.id.Comment);
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 final DatabaseReference postRef = database.getReference("/posts");
@@ -37,7 +39,7 @@ public class CreatePostActivity extends ToolbarActivity {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 Date currentDateTime = new Date();
-                Post post = new Post(body.getText().toString(), currentDateTime, uid);
+                Post post = new Post(body.getText().toString(), currentDateTime, uid, comment.getText().toString());
 
                 postRef.child(key).setValue(post);
 

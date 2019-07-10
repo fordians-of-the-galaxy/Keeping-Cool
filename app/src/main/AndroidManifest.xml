@@ -16,6 +16,11 @@
         android:name=".CreatePostActivity"
         android:label="@string/title_activity_create_post"
         android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".CommentPostActivity"
+            android:label="@string/title_activity_comment_post"
+            android:theme="@style/AppTheme.NoActionBar" />
     <activity
         android:name=".ListPostsActivity"
         android:label="@string/title_activity_list_post_view"
