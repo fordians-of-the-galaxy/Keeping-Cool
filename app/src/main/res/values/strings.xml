@@ -1,22 +1,25 @@
 <resources>
     <string name="app_name">Keeping Cool</string>
-        <string name="action_settings">Settings</string>
-        <string name="title_activity_list_posts">Your Acebook Feed</string>
-        <string name="title_activity_list_post_view">Your Acebook Feed</string>
-        <string name="post_body_hint">What\'s on your mind?</string>
-        <string name="post_button">Post to Middle-Earth</string>
-        <string name="update_button">Submit Update</string>
-        <string name="title_activity_create_post">Create post</string>
-        <string name="login_button">Login</string>
-        <string name="title_activity_login">LoginActivity</string>
-        <string name="logout_button">Logout</string>
-        <string name="post_delete_button">Delete</string>
-        <string name="messenger">Messenger</string>
-        <string name="numberOfLikes">No one likes this</string>
-        <string name="chip_fashion">Fashion</string>
-        <string name="chip_waste">Waste</string>
-        <string name="chip_oceans">Oceans</string>
-        <string name="chip_rainforests">Rainforests</string>
-        <string name="chip_carbon">Carbon</string>
-        <string name="chip_diet">Diet</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_list_posts">Keeping Cool Forum</string>
+    <string name="title_activity_list_post_view">Keeping Cool Forum</string>
+    <string name="post_body_hint">What\'s on your mind?</string>
+    <string name="post_title_hint">Give your post a title!</string>
+    <string name="post_button">Post</string>
+    <string name="update_button">Submit Update</string>
+    <string name="title_activity_create_post">Create post</string>
+    <string name="login_button">Login</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="logout_button">Logout</string>
+    <string name="post_delete_button">Delete</string>
+    <string name="messenger">Messenger</string>
+    <string name="numberOfUpvotes">No votes</string>
+    <string name="title_activity_show_post">ShowPostActivity</string>
+    <string name="chip_fashion">Fashion</string>
+    <string name="chip_waste">Waste</string>
+    <string name="chip_oceans">Oceans</string>
+    <string name="chip_rainforests">Rainforests</string>
+    <string name="chip_carbon">Carbon</string>
+    <string name="chip_diet">Diet</string>
 </resources>
+

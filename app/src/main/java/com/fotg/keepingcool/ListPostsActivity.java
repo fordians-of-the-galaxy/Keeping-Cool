@@ -3,7 +3,9 @@ package com.fotg.keepingcool;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -39,6 +41,16 @@ public class ListPostsActivity extends ToolbarActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference postRef = database.getReference("/posts");
+
+        postsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent showPostActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
+                showPostActivity.putExtra("com.fotg.ITEM_INDEX", i);
+                startActivity(showPostActivity);
+            }
+        });
 
         postRef.addValueEventListener(new ValueEventListener() {
 

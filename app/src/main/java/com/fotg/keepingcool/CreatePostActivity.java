@@ -27,6 +27,7 @@ public class CreatePostActivity extends ToolbarActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        EditText title = findViewById(R.id.postTitle);
         EditText body = findViewById(R.id.postBody);
         Tags tags = new Tags();
         Date currentDateTime = new Date();
@@ -113,7 +114,7 @@ public class CreatePostActivity extends ToolbarActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Post post = new Post(body.getText().toString(), currentDateTime, tags, uid);
+                Post post = new Post(body.getText().toString(), currentDateTime, tags, uid, title.toString());
 
                 postRef.child(key).setValue(post);
 

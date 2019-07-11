@@ -12,6 +12,7 @@ public class Post implements Serializable {
     private String uid;
     private int numberOfLikes;
     private String postId;
+    private String title;
 
 
     public int getNumberOfLikes() {
@@ -54,21 +55,19 @@ public class Post implements Serializable {
 
     public void setTags(Tags filterChips) { tags = filterChips; }
 
+    public String getTitle() { return title; }
+
+    public void setTitle(String title) { this.title = title; }
+
     public Post() {}
 
-    public Post(String b, Date time, Tags filterChips, String id) {
+    public Post(String postBody, Date time, Tags postTags, String id, String postTitle) {
 
-        body = b;
+        body = postBody;
         created = time;
-        tags = filterChips;
+        tags = postTags;
         uid = id;
-    }
-
-    public Post(String b, Date time, String id) {
-
-        body = b;
-        created = time;
-        uid = id;
+        title = postTitle;
     }
 
 }
