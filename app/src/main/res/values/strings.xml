@@ -4,6 +4,7 @@
     <string name="title_activity_list_posts">Keeping Cool Forum</string>
     <string name="title_activity_list_post_view">Keeping Cool Forum</string>
     <string name="post_body_hint">What\'s on your mind?</string>
+    <string name="post_title_hint">Give your post a title!</string>
     <string name="post_button">Post</string>
     <string name="update_button">Submit Update</string>
     <string name="title_activity_create_post">Create post</string>

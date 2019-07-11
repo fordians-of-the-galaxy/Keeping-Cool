@@ -26,8 +26,6 @@
 
     <TextView
         android:id="@+id/bodyView"
-        android:minlines="0"
-        android:maxlines="3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
