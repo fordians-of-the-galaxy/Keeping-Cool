@@ -63,9 +63,8 @@ public class PostAdapter extends BaseAdapter {
         TextView timeTextView = v.findViewById(R.id.timeView);
         TextView bodyTextView = v.findViewById(R.id.bodyView);
         TextView usernameTextView = v.findViewById(R.id.usernameView);
-        TextView likesDisplay = v.findViewById(R.id.likesText);
+        TextView likesDisplay = v.findViewById(R.id.upvotesText);
 
-        AppCompatImageButton likeButton = v.findViewById(R.id.likeButton);
         AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
         AppCompatImageButton editButton = v.findViewById(R.id.editButton);
         AppCompatButton commentButton = v.findViewById(R.id.commentButton);
@@ -74,7 +73,6 @@ public class PostAdapter extends BaseAdapter {
         String body = posts.get(position).getBody();
         String uid = posts.get(position).getUid();
         String postId = posts.get(position).getPostId();
-        String comment = posts.get(position).getComment();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
 
         if (uid.equals(Authentication.getUID())) {
@@ -105,7 +103,7 @@ public class PostAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, CommentPostActivity.class);
-                intent.putExtra(POST_COMMENT, comment);
+//                intent.putExtra(POST_COMMENT, comment);
                 intent.putExtra(POST_BODY, body);
                 intent.putExtra(POST_ID, postId);
                 context.startActivity(intent);
@@ -113,12 +111,34 @@ public class PostAdapter extends BaseAdapter {
         });
 
 
-        likeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                postRef.child(postId).child("numberOfLikes").setValue(numberOfLikes + 1);
-            }
-        });
+//        if (uid.equals(Authentication.getUID())) {
+//            deleteButton.setVisibility(View.VISIBLE);
+//            deleteButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    deletePost(postId);
+//                }
+//            });
+//
+//            editButton.setVisibility(View.VISIBLE);
+//            editButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(context, UpdatePostActivity.class);
+//                    intent.putExtra(POST_BODY, body);
+//                    intent.putExtra(POST_ID, postId);
+//                    context.startActivity(intent);
+//                }
+//            });
+//
+//        }
+
+//        likeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                postRef.child(postId).child("numberOfLikes").setValue(numberOfLikes + 1);
+//            }
+//        });
 
         likesDisplay.setText(numberOfLikes + " people like this");
 
