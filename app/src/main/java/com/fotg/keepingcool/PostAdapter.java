@@ -38,6 +38,7 @@ public class PostAdapter extends BaseAdapter {
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_COMMENT = "com.fotg.keepingcool.COMMENT";
 
+
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
     final DatabaseReference postRef = db.getReference("/posts");
     final DatabaseReference userRef = db.getReference("/users");
@@ -110,38 +111,6 @@ public class PostAdapter extends BaseAdapter {
             }
         });
 
-
-//        if (uid.equals(Authentication.getUID())) {
-//            deleteButton.setVisibility(View.VISIBLE);
-//            deleteButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    deletePost(postId);
-//                }
-//            });
-//
-//            editButton.setVisibility(View.VISIBLE);
-//            editButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(context, UpdatePostActivity.class);
-//                    intent.putExtra(POST_BODY, body);
-//                    intent.putExtra(POST_ID, postId);
-//                    context.startActivity(intent);
-//                }
-//            });
-//
-//        }
-
-//        likeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                postRef.child(postId).child("numberOfLikes").setValue(numberOfLikes + 1);
-//            }
-//        });
-
-//        likesDisplay.setText(numberOfLikes + " people like this");
-
         PrettyTime time_display = new PrettyTime();
 
         timeTextView.setText(time_display.format(time));
@@ -173,8 +142,5 @@ public class PostAdapter extends BaseAdapter {
         return posts.get(position);
 
 
-    }
-    private void deletePost (String id){
-        postRef.child(id).removeValue();
     }
 }
