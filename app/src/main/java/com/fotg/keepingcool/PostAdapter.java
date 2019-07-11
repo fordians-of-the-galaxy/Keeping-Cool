@@ -68,7 +68,6 @@ public class PostAdapter extends BaseAdapter {
 
         AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
         AppCompatImageButton editButton = v.findViewById(R.id.editButton);
-//        AppCompatButton commentButton = v.findViewById(R.id.commentButton);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
@@ -76,40 +75,6 @@ public class PostAdapter extends BaseAdapter {
         String postId = posts.get(position).getPostId();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
 
-//        if (uid.equals(Authentication.getUID())) {
-//            deleteButton.setVisibility(View.VISIBLE);
-//            deleteButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    deletePost(postId);
-//                }
-//            });
-//
-//            editButton.setVisibility(View.VISIBLE);
-//            editButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(context, UpdatePostActivity.class);
-//                    intent.putExtra(POST_BODY, body);
-//                    intent.putExtra(POST_ID, postId);
-//                    context.startActivity(intent);
-//                }
-//            });
-//
-//
-//        }
-
-
-//        commentButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, CommentPostActivity.class);
-////                intent.putExtra(POST_COMMENT, comment);
-//                intent.putExtra(POST_BODY, body);
-//                intent.putExtra(POST_ID, postId);
-//                context.startActivity(intent);
-//            }
-//        });
 
         PrettyTime time_display = new PrettyTime();
 
