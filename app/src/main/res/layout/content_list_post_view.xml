@@ -19,13 +19,15 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/editButton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/usernameView" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"/>
+    <!--app:layout_constraintEnd_toStartOf="@+id/editButton"-->
 
     <TextView
         android:id="@+id/bodyView"
+        android:minlines="0"
+        android:maxlines="3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -52,33 +54,37 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/editButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_edit_black_24dp" />
+        app:layout_constraintStart_toEndOf="@+id/imageView"/>
 
-    <ImageButton
-        android:id="@+id/deleteButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:hapticFeedbackEnabled="true"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete_forever_black_24dp" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/editButton"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:background="?attr/selectableItemBackground"-->
+        <!--android:visibility="visible"-->
+        <!--android:focusable="false"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/deleteButton"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:srcCompat="@drawable/ic_edit_black_24dp" />-->
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/deleteButton"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginEnd="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:background="?attr/selectableItemBackground"-->
+        <!--android:hapticFeedbackEnabled="true"-->
+        <!--android:visibility="visible"-->
+        <!--android:focusable="false"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:srcCompat="@drawable/ic_delete_forever_black_24dp" />-->
 
     <TextView
         android:id="@+id/upvotesText"
