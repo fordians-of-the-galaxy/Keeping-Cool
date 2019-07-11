@@ -12,7 +12,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.Tags;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

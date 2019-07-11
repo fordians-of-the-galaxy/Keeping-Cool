@@ -47,7 +47,7 @@ public class UpdatePostActivity extends ToolbarActivity {
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference postsRef = db.getReference("/posts");
-        final DatabaseReference tagsRef = postsRef.child("/tags");
+        final DatabaseReference tagsRef = postsRef.child("tags");
         final DatabaseReference fashionRef = tagsRef.child("a");
 
         postsRef.addValueEventListener(new ValueEventListener() {
@@ -72,13 +72,6 @@ public class UpdatePostActivity extends ToolbarActivity {
                 System.out.println("**********************");
 //                This works to set the dispaly. Just need the state from the database to be passed into setchecked function.
                 filterChip_fashion.setChecked(true);
-                System.out.println(filterChip_carbon);
-                System.out.println(filterChip_diet);
-                System.out.println(filterChip_fashion);
-                System.out.println(filterChip_oceans);
-                System.out.println(filterChip_rainforest);
-                System.out.println(filterChip_waste);
-
 
 //                filterChip_fashion.setChecked(tags.getChip_fashion());
 
@@ -90,9 +83,7 @@ public class UpdatePostActivity extends ToolbarActivity {
             }
         });
 
-//
-//
-//
+
 //        filterChip_fashion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -103,8 +94,6 @@ public class UpdatePostActivity extends ToolbarActivity {
 //                }
 //            }
 //        });
-//
-
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
