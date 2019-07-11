@@ -75,28 +75,28 @@ public class PostAdapter extends BaseAdapter {
         String postId = posts.get(position).getPostId();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
 
-        if (uid.equals(Authentication.getUID())) {
-            deleteButton.setVisibility(View.VISIBLE);
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    deletePost(postId);
-                }
-            });
-
-            editButton.setVisibility(View.VISIBLE);
-            editButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, UpdatePostActivity.class);
-                    intent.putExtra(POST_BODY, body);
-                    intent.putExtra(POST_ID, postId);
-                    context.startActivity(intent);
-                }
-            });
-
-
-        }
+//        if (uid.equals(Authentication.getUID())) {
+//            deleteButton.setVisibility(View.VISIBLE);
+//            deleteButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    deletePost(postId);
+//                }
+//            });
+//
+//            editButton.setVisibility(View.VISIBLE);
+//            editButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(context, UpdatePostActivity.class);
+//                    intent.putExtra(POST_BODY, body);
+//                    intent.putExtra(POST_ID, postId);
+//                    context.startActivity(intent);
+//                }
+//            });
+//
+//
+//        }
 
 
         commentButton.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +140,7 @@ public class PostAdapter extends BaseAdapter {
 //            }
 //        });
 
-        likesDisplay.setText(numberOfLikes + " people like this");
+//        likesDisplay.setText(numberOfLikes + " people like this");
 
         PrettyTime time_display = new PrettyTime();
 
