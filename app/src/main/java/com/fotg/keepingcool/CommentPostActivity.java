@@ -50,9 +50,8 @@ public class CommentPostActivity extends ToolbarActivity {
                 myRef.child(postId).child("comments").push().setValue(comment.getText().toString());
 
 
-                    Intent showListPostsActivity = new Intent(getApplicationContext(), ListPostsActivity.class);
+                    Intent showListPostsActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
                     startActivity(showListPostsActivity);
-
             }
         });
     }

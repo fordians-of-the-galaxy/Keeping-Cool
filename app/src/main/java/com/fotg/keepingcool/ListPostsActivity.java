@@ -25,7 +25,8 @@ public class ListPostsActivity extends ToolbarActivity {
 
     ListView postsView;
     ArrayList<Post> postList;
-
+    public static final String POST_ID = "com.fotg.keepingcool.ID";
+    public static final String POST_BODY = "com.fotg.keepingcool.BODY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class ListPostsActivity extends ToolbarActivity {
 
                 Intent showPostActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
                 showPostActivity.putExtra("com.fotg.ITEM_INDEX", i);
+                String postID = postList.get(i).getPostId();
+                String body = postList.get(i).getBody();
+                showPostActivity.putExtra(POST_ID, postID);
+                showPostActivity.putExtra(POST_BODY, body);
                 startActivity(showPostActivity);
             }
         });
