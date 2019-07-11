@@ -15,5 +15,11 @@
     <string name="messenger">Messenger</string>
     <string name="numberOfUpvotes">No votes</string>
     <string name="title_activity_show_post">ShowPostActivity</string>
+    <string name="chip_fashion">Fashion</string>
+    <string name="chip_waste">Waste</string>
+    <string name="chip_oceans">Oceans</string>
+    <string name="chip_rainforests">Rainforests</string>
+    <string name="chip_carbon">Carbon</string>
+    <string name="chip_diet">Diet</string>
 </resources>
 
