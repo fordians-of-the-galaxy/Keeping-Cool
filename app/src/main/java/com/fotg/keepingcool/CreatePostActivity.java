@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,8 +14,11 @@ import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.Tags;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
@@ -77,6 +81,7 @@ public class CreatePostActivity extends ToolbarActivity {
             }
         });
 
+
         filterChip_rainforest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -99,6 +104,7 @@ public class CreatePostActivity extends ToolbarActivity {
             }
         });
 
+
         filterChip_diet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -114,9 +120,12 @@ public class CreatePostActivity extends ToolbarActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Post post = new Post(body.getText().toString(), currentDateTime, tags, uid, title.toString());
+                Post post = new Post(body.getText().toString(), currentDateTime, tags, uid, title.getText().toString());
+
 
                 postRef.child(key).setValue(post);
+
+
 
                 Intent showListPostsActivity = new Intent(getApplicationContext(), ListPostsActivity.class);
                 startActivity(showListPostsActivity);

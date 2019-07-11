@@ -15,6 +15,7 @@ public class Post implements Serializable {
     private String title;
 
 
+
     public int getNumberOfLikes() {
         return numberOfLikes;
     }
@@ -43,6 +44,7 @@ public class Post implements Serializable {
         body = b;
     }
 
+
     public Date getTime() {
         return created;
     }
@@ -50,6 +52,7 @@ public class Post implements Serializable {
     public void setTime(Date time) {
         created = time;
     }
+
 
     public Tags getTags() { return tags; }
 
@@ -68,6 +71,7 @@ public class Post implements Serializable {
         tags = postTags;
         uid = id;
         title = postTitle;
+
     }
 
 }

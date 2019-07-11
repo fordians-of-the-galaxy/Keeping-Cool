@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.fotg.keepingcool.models.Post;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.ocpsoft.prettytime.PrettyTime;
+import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +36,7 @@ public class PostAdapter extends BaseAdapter {
 
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
     public static final String POST_ID = "com.fotg.keepingcool.ID";
+    public static final String POST_COMMENT = "com.fotg.keepingcool.COMMENT";
 
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
     final DatabaseReference postRef = db.getReference("/posts");
@@ -62,15 +65,51 @@ public class PostAdapter extends BaseAdapter {
         TextView usernameTextView = v.findViewById(R.id.usernameView);
         TextView likesDisplay = v.findViewById(R.id.upvotesText);
 
-//        AppCompatImageButton likeButton = v.findViewById(R.id.likeButton);
-//        AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
-//        AppCompatImageButton editButton = v.findViewById(R.id.editButton);
+        AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
+        AppCompatImageButton editButton = v.findViewById(R.id.editButton);
+        AppCompatButton commentButton = v.findViewById(R.id.commentButton);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
         String uid = posts.get(position).getUid();
         String postId = posts.get(position).getPostId();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
+
+//        if (uid.equals(Authentication.getUID())) {
+//            deleteButton.setVisibility(View.VISIBLE);
+//            deleteButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    deletePost(postId);
+//                }
+//            });
+//
+//            editButton.setVisibility(View.VISIBLE);
+//            editButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(context, UpdatePostActivity.class);
+//                    intent.putExtra(POST_BODY, body);
+//                    intent.putExtra(POST_ID, postId);
+//                    context.startActivity(intent);
+//                }
+//            });
+//
+//
+//        }
+
+
+        commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, CommentPostActivity.class);
+//                intent.putExtra(POST_COMMENT, comment);
+                intent.putExtra(POST_BODY, body);
+                intent.putExtra(POST_ID, postId);
+                context.startActivity(intent);
+            }
+        });
+
 
 //        if (uid.equals(Authentication.getUID())) {
 //            deleteButton.setVisibility(View.VISIBLE);
@@ -101,7 +140,7 @@ public class PostAdapter extends BaseAdapter {
 //            }
 //        });
 
-        likesDisplay.setText(numberOfLikes + " people like this");
+//        likesDisplay.setText(numberOfLikes + " people like this");
 
         PrettyTime time_display = new PrettyTime();
 
