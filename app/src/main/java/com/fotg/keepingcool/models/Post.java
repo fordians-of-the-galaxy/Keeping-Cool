@@ -60,12 +60,12 @@ public class Post implements Serializable {
 
     public Post() {}
 
-    public Post(String b, Date time, String id, String c) {
+    public Post(String b, Date time, String id) {
 
         body = b;
         created = time;
         uid = id;
-        comment = c;
+//        comment = c;
 
     }
 
