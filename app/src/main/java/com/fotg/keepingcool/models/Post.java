@@ -11,6 +11,7 @@ public class Post implements Serializable {
     private String uid;
     private int numberOfLikes;
     private String postId;
+    private String title;
 
 
     public int getNumberOfLikes() {
@@ -52,11 +53,12 @@ public class Post implements Serializable {
 
     public Post() {}
 
-    public Post(String b, Date time, String id) {
+    public Post(String b, Date time, String id, String postTitle) {
 
         body = b;
         created = time;
         uid = id;
+        title = postTitle;
     }
 
 }

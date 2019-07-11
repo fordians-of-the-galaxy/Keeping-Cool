@@ -30,6 +30,7 @@ public class CreatePostActivity extends ToolbarActivity {
             public void onClick(View v) {
 
                 EditText body = findViewById(R.id.postBody);
+                EditText title = findViewById(R.id.postTitle);
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 final DatabaseReference postRef = database.getReference("/posts");
@@ -37,7 +38,7 @@ public class CreatePostActivity extends ToolbarActivity {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                 Date currentDateTime = new Date();
-                Post post = new Post(body.getText().toString(), currentDateTime, uid);
+                Post post = new Post(body.getText().toString(), currentDateTime, uid, title.toString());
 
                 postRef.child(key).setValue(post);
 
