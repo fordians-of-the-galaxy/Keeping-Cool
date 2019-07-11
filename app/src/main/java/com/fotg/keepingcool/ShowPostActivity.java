@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
@@ -39,6 +40,8 @@ public class ShowPostActivity extends AppCompatActivity {
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
+        Button commentButton = findViewById(R.id.commentButton);
+
 
         if (uid.equals(Authentication.getUID())) {
             deleteButton.setVisibility(View.VISIBLE);
@@ -46,6 +49,8 @@ public class ShowPostActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     deletePost(postId);
+                    Intent intent = new Intent(ShowPostActivity.this, ListPostsActivity.class);
+                    ShowPostActivity.this.startActivity(intent);
                 }
             });
 
@@ -59,8 +64,18 @@ public class ShowPostActivity extends AppCompatActivity {
                     ShowPostActivity.this.startActivity(intent);
                 }
             });
-
         }
+
+        commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowPostActivity.this, CommentPostActivity.class);
+//                intent.putExtra(POST_COMMENT, comment);
+                intent.putExtra(POST_BODY, body);
+                intent.putExtra(POST_ID, postId);
+                ShowPostActivity.this.startActivity(intent);
+            }
+        });
 
         //        likeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -68,7 +68,7 @@ public class PostAdapter extends BaseAdapter {
 
         AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
         AppCompatImageButton editButton = v.findViewById(R.id.editButton);
-        AppCompatButton commentButton = v.findViewById(R.id.commentButton);
+//        AppCompatButton commentButton = v.findViewById(R.id.commentButton);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
@@ -100,16 +100,16 @@ public class PostAdapter extends BaseAdapter {
 //        }
 
 
-        commentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, CommentPostActivity.class);
-//                intent.putExtra(POST_COMMENT, comment);
-                intent.putExtra(POST_BODY, body);
-                intent.putExtra(POST_ID, postId);
-                context.startActivity(intent);
-            }
-        });
+//        commentButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, CommentPostActivity.class);
+////                intent.putExtra(POST_COMMENT, comment);
+//                intent.putExtra(POST_BODY, body);
+//                intent.putExtra(POST_ID, postId);
+//                context.startActivity(intent);
+//            }
+//        });
 
         PrettyTime time_display = new PrettyTime();
 
