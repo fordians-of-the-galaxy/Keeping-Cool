@@ -2,6 +2,8 @@ package com.fotg.keepingcool;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.fotg.keepingcool.models.User;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +18,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.Date;
 
 public class ShowPostActivity extends AppCompatActivity {
 
@@ -38,8 +44,8 @@ public class ShowPostActivity extends AppCompatActivity {
         Button commentButton = findViewById(R.id.commentButton);
         TextView titleText = findViewById(R.id.titleText);
         TextView bodyText = findViewById(R.id.bodyText);
-        //TextView userNameText = findViewById(R.id.userNameText);
-        //TextView timestampText = findViewById(R.id.timestampText);
+        TextView userNameText = findViewById(R.id.userNameText);
+        TextView timestampText = findViewById(R.id.timestampText);
 
 
         Chip filterChip_fashion = findViewById(R.id.chip_fashion);
@@ -50,6 +56,7 @@ public class ShowPostActivity extends AppCompatActivity {
         Chip filterChip_diet = findViewById(R.id.chip_diet);
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference("/users");
         final DatabaseReference postRef = db.getReference("/posts/" + postId);
 
         postRef.addValueEventListener(new ValueEventListener() {
@@ -65,17 +72,32 @@ public class ShowPostActivity extends AppCompatActivity {
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
 
-//                Date time_stamp = null;
-//                for (DataSnapshot postSnapshot: dataSnapshot.child("time").getChildren()) {
-//                    time_stamp = postSnapshot.getValue(Date.class);
-//                }
-//                System.out.println("*************");
-//                System.out.println(time_stamp);
+
+                Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
+                Date postTimestamp = new Date(longTimestamp);
+                PrettyTime time_display = new PrettyTime();
+                timestampText.setText(time_display.format(postTimestamp));
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user;
+                String name;
+
+                user = dataSnapshot.child(uid).getValue(User.class);
+                name = user.getName();
+                userNameText.setText(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
