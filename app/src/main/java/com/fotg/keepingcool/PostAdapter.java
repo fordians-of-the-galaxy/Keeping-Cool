@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.User;
+import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,19 +66,63 @@ public class PostAdapter extends BaseAdapter {
         TextView bodyTextView = v.findViewById(R.id.bodyView);
         TextView usernameTextView = v.findViewById(R.id.usernameView);
         TextView likesDisplay = v.findViewById(R.id.upvotesText);
+        TextView titleTextView = v.findViewById(R.id.titleTextView);
 
+        TextView fashion = v.findViewById(R.id.fashionText);
+        TextView waste = v.findViewById(R.id.wasteText);
+        TextView oceans = v.findViewById(R.id.oceansText);
+        TextView rainforests = v.findViewById(R.id.rainforestsText);
+        TextView carbon = v.findViewById(R.id.carbonText);
+        TextView diet = v.findViewById(R.id.dietText);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
         String uid = posts.get(position).getUid();
+        String title = posts.get(position).getTitle();
         String postId = posts.get(position).getPostId();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference postsRef = db.getReference("/posts");
+        final DatabaseReference tagsRef = db.getReference("/posts/" + postId + "/tags");
+
+        tagsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if ((boolean) dataSnapshot.child("Fashion").getValue()) {
+                    fashion.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Carbon").getValue()) {
+                    carbon.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Diet").getValue()) {
+                    diet.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Oceans").getValue()) {
+                    oceans.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Rainforest").getValue()) {
+                    rainforests.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Waste").getValue()) {
+                    waste.setVisibility(View.VISIBLE);
+                }
+
+            }
+// use dataSnapshot to get boolean. Then if true, display label, if false do not display label.
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         PrettyTime time_display = new PrettyTime();
 
         timeTextView.setText(time_display.format(time));
         bodyTextView.setText(body);
+        titleTextView.setText(title);
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

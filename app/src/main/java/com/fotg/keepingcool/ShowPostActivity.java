@@ -47,13 +47,12 @@ public class ShowPostActivity extends AppCompatActivity {
         TextView userNameText = findViewById(R.id.userNameText);
         TextView timestampText = findViewById(R.id.timestampText);
 
-
-        Chip filterChip_fashion = findViewById(R.id.chip_fashion);
-        Chip filterChip_waste = findViewById(R.id.chip_waste);
-        Chip filterChip_oceans = findViewById(R.id.chip_oceans);
-        Chip filterChip_rainforest = findViewById(R.id.chip_rainforest);
-        Chip filterChip_carbon = findViewById(R.id.chip_carbon);
-        Chip filterChip_diet = findViewById(R.id.chip_diet);
+        TextView fashion = findViewById(R.id.fashionText);
+        TextView waste = findViewById(R.id.wasteText);
+        TextView oceans = findViewById(R.id.oceansText);
+        TextView rainforests = findViewById(R.id.rainforestsText);
+        TextView carbon = findViewById(R.id.carbonText);
+        TextView diet = findViewById(R.id.dietText);
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference("/users");
@@ -62,12 +61,6 @@ public class ShowPostActivity extends AppCompatActivity {
         postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                filterChip_fashion.setChecked((boolean) dataSnapshot.child("tags").child("Fashion").getValue());
-                filterChip_carbon.setChecked((boolean) dataSnapshot.child("tags").child("Carbon").getValue());
-                filterChip_diet.setChecked((boolean) dataSnapshot.child("tags").child("Diet").getValue());
-                filterChip_oceans.setChecked((boolean) dataSnapshot.child("tags").child("Oceans").getValue());
-                filterChip_rainforest.setChecked((boolean) dataSnapshot.child("tags").child("Rainforest").getValue());
-                filterChip_waste.setChecked((boolean) dataSnapshot.child("tags").child("Waste").getValue());
 
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
@@ -77,6 +70,25 @@ public class ShowPostActivity extends AppCompatActivity {
                 Date postTimestamp = new Date(longTimestamp);
                 PrettyTime time_display = new PrettyTime();
                 timestampText.setText(time_display.format(postTimestamp));
+
+                if ((boolean) dataSnapshot.child("tags").child("Fashion").getValue()) {
+                    fashion.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Carbon").getValue()) {
+                    carbon.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Diet").getValue()) {
+                    diet.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Oceans").getValue()) {
+                    oceans.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Rainforest").getValue()) {
+                    rainforests.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Waste").getValue()) {
+                    waste.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

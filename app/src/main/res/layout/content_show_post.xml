@@ -31,7 +31,7 @@
         android:layout_marginRight="32dp"
         android:text="comment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/labelGroup" />
 
     <TextView
         android:id="@+id/bodyText"
@@ -149,10 +149,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
         android:text="Number of comments"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintBottom_toBottomOf="@+id/commentButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
@@ -170,61 +169,113 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOfCommentsText" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/labelGroup"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upvoteButton">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_fashion"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chip_fashion" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_waste"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <TextView
+            android:id="@+id/fashionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chip_waste" />
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_fashion"
+            android:textColor="#000000"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="304dp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_oceans"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <TextView
+            android:id="@+id/dietText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chip_oceans" />
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_diet"
+            android:textColor="#000000"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="312dp"
+            tools:layout_editor_absoluteY="347dp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_rainforest"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <TextView
+            android:id="@+id/rainforestsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chip_rainforests" />
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_rainforests"
+            android:textColor="#000000"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="347dp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_carbon"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <TextView
+            android:id="@+id/carbonText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chip_carbon" />
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_carbon"
+            android:textColor="#000000"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="227dp"
+            tools:layout_editor_absoluteY="347dp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_diet"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <TextView
+            android:id="@+id/wasteText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chip_diet" />
-    </com.google.android.material.chip.ChipGroup>
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_waste"
+            android:textColor="#000000"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="201dp"
+            tools:layout_editor_absoluteY="304dp" />
+
+        <TextView
+            android:id="@+id/oceansText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_oceans"
+            android:textColor="#000000"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="282dp"
+            tools:layout_editor_absoluteY="304dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
