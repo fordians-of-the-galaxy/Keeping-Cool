@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.material.chip.Chip;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
@@ -41,6 +46,41 @@ public class ShowPostActivity extends AppCompatActivity {
         String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
         Button commentButton = findViewById(R.id.commentButton);
+
+
+
+
+
+
+
+        Chip filterChip_fashion = findViewById(R.id.chip_fashion);
+        Chip filterChip_waste = findViewById(R.id.chip_waste);
+        Chip filterChip_oceans = findViewById(R.id.chip_oceans);
+        Chip filterChip_rainforest = findViewById(R.id.chip_rainforest);
+        Chip filterChip_carbon = findViewById(R.id.chip_carbon);
+        Chip filterChip_diet = findViewById(R.id.chip_diet);
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference postRef = db.getReference("/posts/" + postId);
+
+        postRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                filterChip_fashion.setChecked((boolean) dataSnapshot.child("tags").child("Fashion").getValue());
+                filterChip_carbon.setChecked((boolean) dataSnapshot.child("tags").child("Carbon").getValue());
+                filterChip_diet.setChecked((boolean) dataSnapshot.child("tags").child("Diet").getValue());
+                filterChip_oceans.setChecked((boolean) dataSnapshot.child("tags").child("Oceans").getValue());
+                filterChip_rainforest.setChecked((boolean) dataSnapshot.child("tags").child("Rainforest").getValue());
+                filterChip_waste.setChecked((boolean) dataSnapshot.child("tags").child("Waste").getValue());
+                filterChip_fashion.setuneditable();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         if (uid.equals(Authentication.getUID())) {
