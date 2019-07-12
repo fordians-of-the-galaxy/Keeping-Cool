@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.User;
+import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,12 +68,40 @@ public class PostAdapter extends BaseAdapter {
         TextView likesDisplay = v.findViewById(R.id.upvotesText);
         TextView titleTextView = v.findViewById(R.id.titleTextView);
 
+//        Chip filterChip_fashion = v.findViewById(R.id.chip_fashion);
+//        Chip filterChip_waste = v.findViewById(R.id.chip_waste);
+//        Chip filterChip_oceans = v.findViewById(R.id.chip_oceans);
+//        Chip filterChip_rainforest = v.findViewById(R.id.chip_rainforest);
+//        Chip filterChip_carbon = v.findViewById(R.id.chip_carbon);
+//        Chip filterChip_diet = v.findViewById(R.id.chip_diet);
+
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
         String uid = posts.get(position).getUid();
         String title = posts.get(position).getTitle();
         String postId = posts.get(position).getPostId();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference postsRef = db.getReference("/posts");
+        final DatabaseReference postRef = db.getReference("/posts/" + postId + "/tags");
+
+//        postRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                filterChip_fashion.setChecked((boolean) dataSnapshot.child("Fashion").getValue());
+//                filterChip_carbon.setChecked((boolean) dataSnapshot.child("Carbon").getValue());
+//                filterChip_diet.setChecked((boolean) dataSnapshot.child("Diet").getValue());
+//                filterChip_oceans.setChecked((boolean) dataSnapshot.child("Oceans").getValue());
+//                filterChip_rainforest.setChecked((boolean) dataSnapshot.child("Rainforest").getValue());
+//                filterChip_waste.setChecked((boolean) dataSnapshot.child("Waste").getValue());
+//            }
+//// use dataSnapshot to get boolean. Then if true, display label, if false do not display label.
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
         PrettyTime time_display = new PrettyTime();

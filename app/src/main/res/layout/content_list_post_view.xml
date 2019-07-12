@@ -7,6 +7,111 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_list_post_view">
 
+    <LinearLayout
+        android:id="@+id/labelGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upvotesText">
+
+
+        <TextView
+            android:id="@+id/fashionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_fashion"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="304dp" />
+
+        <TextView
+            android:id="@+id/dietText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_diet"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="312dp"
+            tools:layout_editor_absoluteY="347dp" />
+
+        <TextView
+            android:id="@+id/rainforestsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_rainforests"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="347dp" />
+
+        <TextView
+            android:id="@+id/carbonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_carbon"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="227dp"
+            tools:layout_editor_absoluteY="347dp" />
+
+        <TextView
+            android:id="@+id/wasteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_waste"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="201dp"
+            tools:layout_editor_absoluteY="304dp" />
+
+        <TextView
+            android:id="@+id/oceansText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round"
+            android:lineSpacingExtra="14sp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/chip_oceans"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteX="282dp"
+            tools:layout_editor_absoluteY="304dp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/timeView"
         android:layout_width="211dp"
@@ -135,5 +240,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
