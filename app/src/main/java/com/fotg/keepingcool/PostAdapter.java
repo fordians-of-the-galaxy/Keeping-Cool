@@ -65,13 +65,12 @@ public class PostAdapter extends BaseAdapter {
         TextView bodyTextView = v.findViewById(R.id.bodyView);
         TextView usernameTextView = v.findViewById(R.id.usernameView);
         TextView likesDisplay = v.findViewById(R.id.upvotesText);
-
-        AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
-        AppCompatImageButton editButton = v.findViewById(R.id.editButton);
+        TextView titleTextView = v.findViewById(R.id.titleTextView);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
         String uid = posts.get(position).getUid();
+        String title = posts.get(position).getTitle();
         String postId = posts.get(position).getPostId();
         int numberOfLikes = posts.get(position).getNumberOfLikes();
 
@@ -80,6 +79,7 @@ public class PostAdapter extends BaseAdapter {
 
         timeTextView.setText(time_display.format(time));
         bodyTextView.setText(body);
+        titleTextView.setText(title);
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
