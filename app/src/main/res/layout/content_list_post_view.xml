@@ -11,12 +11,10 @@
         android:id="@+id/labelGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_gravity="left"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upvotesText">
 
@@ -33,6 +31,7 @@
             android:paddingBottom="4dp"
             android:text="@string/chip_fashion"
             android:textColor="#000000"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="101dp"
             tools:layout_editor_absoluteY="304dp" />
 
@@ -48,6 +47,7 @@
             android:paddingBottom="4dp"
             android:text="@string/chip_diet"
             android:textColor="#000000"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="312dp"
             tools:layout_editor_absoluteY="347dp" />
 
@@ -63,6 +63,7 @@
             android:paddingBottom="4dp"
             android:text="@string/chip_rainforests"
             android:textColor="#000000"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="101dp"
             tools:layout_editor_absoluteY="347dp" />
 
@@ -78,6 +79,7 @@
             android:paddingBottom="4dp"
             android:text="@string/chip_carbon"
             android:textColor="#000000"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="227dp"
             tools:layout_editor_absoluteY="347dp" />
 
@@ -93,6 +95,7 @@
             android:paddingBottom="4dp"
             android:text="@string/chip_waste"
             android:textColor="#000000"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="201dp"
             tools:layout_editor_absoluteY="304dp" />
 
@@ -108,6 +111,7 @@
             android:paddingBottom="4dp"
             android:text="@string/chip_oceans"
             android:textColor="#000000"
+            android:visibility="gone"
             tools:layout_editor_absoluteX="282dp"
             tools:layout_editor_absoluteY="304dp" />
     </LinearLayout>

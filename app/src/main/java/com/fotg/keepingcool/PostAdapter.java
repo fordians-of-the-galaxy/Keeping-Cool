@@ -68,12 +68,12 @@ public class PostAdapter extends BaseAdapter {
         TextView likesDisplay = v.findViewById(R.id.upvotesText);
         TextView titleTextView = v.findViewById(R.id.titleTextView);
 
-//        Chip filterChip_fashion = v.findViewById(R.id.chip_fashion);
-//        Chip filterChip_waste = v.findViewById(R.id.chip_waste);
-//        Chip filterChip_oceans = v.findViewById(R.id.chip_oceans);
-//        Chip filterChip_rainforest = v.findViewById(R.id.chip_rainforest);
-//        Chip filterChip_carbon = v.findViewById(R.id.chip_carbon);
-//        Chip filterChip_diet = v.findViewById(R.id.chip_diet);
+        TextView fashion = v.findViewById(R.id.fashionText);
+        TextView waste = v.findViewById(R.id.wasteText);
+        TextView oceans = v.findViewById(R.id.oceansText);
+        TextView rainforests = v.findViewById(R.id.rainforestsText);
+        TextView carbon = v.findViewById(R.id.carbonText);
+        TextView diet = v.findViewById(R.id.dietText);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();
@@ -86,22 +86,36 @@ public class PostAdapter extends BaseAdapter {
         final DatabaseReference postsRef = db.getReference("/posts");
         final DatabaseReference postRef = db.getReference("/posts/" + postId + "/tags");
 
-//        postRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                filterChip_fashion.setChecked((boolean) dataSnapshot.child("Fashion").getValue());
-//                filterChip_carbon.setChecked((boolean) dataSnapshot.child("Carbon").getValue());
-//                filterChip_diet.setChecked((boolean) dataSnapshot.child("Diet").getValue());
-//                filterChip_oceans.setChecked((boolean) dataSnapshot.child("Oceans").getValue());
-//                filterChip_rainforest.setChecked((boolean) dataSnapshot.child("Rainforest").getValue());
-//                filterChip_waste.setChecked((boolean) dataSnapshot.child("Waste").getValue());
-//            }
-//// use dataSnapshot to get boolean. Then if true, display label, if false do not display label.
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        postRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if ((boolean) dataSnapshot.child("Fashion").getValue()) {
+                    fashion.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Carbon").getValue()) {
+                    carbon.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Diet").getValue()) {
+                    diet.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Oceans").getValue()) {
+                    oceans.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Rainforest").getValue()) {
+                    rainforests.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("Waste").getValue()) {
+                    waste.setVisibility(View.VISIBLE);
+                }
+
+            }
+// use dataSnapshot to get boolean. Then if true, display label, if false do not display label.
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         PrettyTime time_display = new PrettyTime();
