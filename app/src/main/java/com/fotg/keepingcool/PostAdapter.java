@@ -66,8 +66,6 @@ public class PostAdapter extends BaseAdapter {
         TextView usernameTextView = v.findViewById(R.id.usernameView);
         TextView likesDisplay = v.findViewById(R.id.upvotesText);
 
-        AppCompatImageButton deleteButton = v.findViewById(R.id.deleteButton);
-        AppCompatImageButton editButton = v.findViewById(R.id.editButton);
 
         Date time = posts.get(position).getTime();
         String body = posts.get(position).getBody();

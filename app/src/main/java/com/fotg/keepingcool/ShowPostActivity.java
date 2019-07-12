@@ -1,31 +1,21 @@
 package com.fotg.keepingcool;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.google.android.material.chip.Chip;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-
-import java.util.List;
-
-import static com.fotg.keepingcool.PostAdapter.POST_BODY;
+import android.widget.TextView;
 
 public class ShowPostActivity extends AppCompatActivity {
 
@@ -46,11 +36,10 @@ public class ShowPostActivity extends AppCompatActivity {
         String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
         Button commentButton = findViewById(R.id.commentButton);
-
-
-
-
-
+        TextView titleText = findViewById(R.id.titleText);
+        TextView bodyText = findViewById(R.id.bodyText);
+        //TextView userNameText = findViewById(R.id.userNameText);
+        //TextView timestampText = findViewById(R.id.timestampText);
 
 
         Chip filterChip_fashion = findViewById(R.id.chip_fashion);
@@ -72,8 +61,16 @@ public class ShowPostActivity extends AppCompatActivity {
                 filterChip_oceans.setChecked((boolean) dataSnapshot.child("tags").child("Oceans").getValue());
                 filterChip_rainforest.setChecked((boolean) dataSnapshot.child("tags").child("Rainforest").getValue());
                 filterChip_waste.setChecked((boolean) dataSnapshot.child("tags").child("Waste").getValue());
-                filterChip_fashion.setuneditable();
 
+                titleText.setText((String) dataSnapshot.child("title").getValue());
+                bodyText.setText((String) dataSnapshot.child("body").getValue());
+
+//                Date time_stamp = null;
+//                for (DataSnapshot postSnapshot: dataSnapshot.child("time").getChildren()) {
+//                    time_stamp = postSnapshot.getValue(Date.class);
+//                }
+//                System.out.println("*************");
+//                System.out.println(time_stamp);
             }
 
             @Override
