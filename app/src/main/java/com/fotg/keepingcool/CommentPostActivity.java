@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
+import com.fotg.keepingcool.models.Comment;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,25 +31,25 @@ public class CommentPostActivity extends ToolbarActivity {
         TextView body = findViewById(R.id.originalPost);
         EditText comment = findViewById(R.id.Comment);
 
-
-
         Intent intent = getIntent();
         String textBody = intent.getStringExtra(PostAdapter.POST_BODY);
-        String postComment = intent.getStringExtra(PostAdapter.POST_COMMENT);
         String postId = intent.getStringExtra(PostAdapter.POST_ID);
-        comment.setText(postComment);
+
         body.setText(textBody);
-
-
 
         commentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = db.getReference("/posts");
 
+                String uid = FirebaseAuth.getInstance().getUid();
+                Comment commentObject = new Comment(uid, comment.getText().toString());
 
-                myRef.child(postId).child("comments").push().setValue(comment.getText().toString());
+                myRef.child(postId).child("comments").push().setValue(commentObject);
+
+//                myRef.child(postId).child("comments").push().setValue(comment.getText().toString());
 
 
                     Intent showListPostsActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
