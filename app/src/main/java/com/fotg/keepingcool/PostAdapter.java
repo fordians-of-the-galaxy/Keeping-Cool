@@ -84,9 +84,9 @@ public class PostAdapter extends BaseAdapter {
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference postsRef = db.getReference("/posts");
-        final DatabaseReference postRef = db.getReference("/posts/" + postId + "/tags");
+        final DatabaseReference tagsRef = db.getReference("/posts/" + postId + "/tags");
 
-        postRef.addValueEventListener(new ValueEventListener() {
+        tagsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

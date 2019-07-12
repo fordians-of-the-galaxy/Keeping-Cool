@@ -1,26 +1,27 @@
 package com.fotg.keepingcool;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.fotg.keepingcool.models.User;
+import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.ValueEventListener;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
-import java.util.List;
+import org.ocpsoft.prettytime.PrettyTime;
 
-import static com.fotg.keepingcool.PostAdapter.POST_BODY;
+import java.util.Date;
 
 public class ShowPostActivity extends AppCompatActivity {
 
@@ -41,6 +42,76 @@ public class ShowPostActivity extends AppCompatActivity {
         String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
         Button commentButton = findViewById(R.id.commentButton);
+        TextView titleText = findViewById(R.id.titleText);
+        TextView bodyText = findViewById(R.id.bodyText);
+        TextView userNameText = findViewById(R.id.userNameText);
+        TextView timestampText = findViewById(R.id.timestampText);
+
+        TextView fashion = findViewById(R.id.fashionText);
+        TextView waste = findViewById(R.id.wasteText);
+        TextView oceans = findViewById(R.id.oceansText);
+        TextView rainforests = findViewById(R.id.rainforestsText);
+        TextView carbon = findViewById(R.id.carbonText);
+        TextView diet = findViewById(R.id.dietText);
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference("/users");
+        final DatabaseReference postRef = db.getReference("/posts/" + postId);
+
+        postRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                titleText.setText((String) dataSnapshot.child("title").getValue());
+                bodyText.setText((String) dataSnapshot.child("body").getValue());
+
+
+                Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
+                Date postTimestamp = new Date(longTimestamp);
+                PrettyTime time_display = new PrettyTime();
+                timestampText.setText(time_display.format(postTimestamp));
+
+                if ((boolean) dataSnapshot.child("tags").child("Fashion").getValue()) {
+                    fashion.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Carbon").getValue()) {
+                    carbon.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Diet").getValue()) {
+                    diet.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Oceans").getValue()) {
+                    oceans.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Rainforest").getValue()) {
+                    rainforests.setVisibility(View.VISIBLE);
+                }
+                if ((boolean) dataSnapshot.child("tags").child("Waste").getValue()) {
+                    waste.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user;
+                String name;
+
+                user = dataSnapshot.child(uid).getValue(User.class);
+                name = user.getName();
+                userNameText.setText(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
 
         if (uid.equals(Authentication.getUID())) {
