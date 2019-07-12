@@ -36,7 +36,7 @@ public class UpdatePostActivity extends ToolbarActivity {
         String postBody = intent.getStringExtra(PostAdapter.POST_BODY);
         String postId = intent.getStringExtra(PostAdapter.POST_ID);
         body.setText(postBody);
-//        Tags tags = new Tags();
+        Tags tags = new Tags();
 
         Chip filterChip_fashion = findViewById(R.id.chip_fashion);
         Chip filterChip_waste = findViewById(R.id.chip_waste);
@@ -47,34 +47,17 @@ public class UpdatePostActivity extends ToolbarActivity {
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference postsRef = db.getReference("/posts");
-        final DatabaseReference tagsRef = postsRef.child("tags");
-        final DatabaseReference fashionRef = tagsRef.child("a");
+        final DatabaseReference postRef = db.getReference("/posts/" + postId + "/tags");
 
-        postsRef.addValueEventListener(new ValueEventListener() {
-//        tagsRef.addValueEventListener(new ValueEventListener() {
+        postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                This constructor is making the "tags" object run default constructor. Therefore setting everything to false.
-//                Need to set so using other constructor and passing in actual values of the children in the DB on construction.
-
-                Tags tags = dataSnapshot.getValue(Tags.class);
-                filterChip_fashion.setChecked(tags.getChip_fashion());
-                System.out.println(tags);
-                System.out.println("**********************");
-                System.out.println(tags.getChip_fashion());
-                System.out.println(tags.getChip_carbon());
-                System.out.println(tags.getChip_diet());
-                System.out.println(tags.getChip_oceans());
-                System.out.println(tags.getChip_rainforest());
-                System.out.println(tags.getChip_waste());
-                System.out.println("**********************");
-                System.out.println();
-                System.out.println("**********************");
-//                This works to set the dispaly. Just need the state from the database to be passed into setchecked function.
-                filterChip_fashion.setChecked(true);
-
-//                filterChip_fashion.setChecked(tags.getChip_fashion());
-
+                filterChip_fashion.setChecked((boolean) dataSnapshot.child("Fashion").getValue());
+                filterChip_carbon.setChecked((boolean) dataSnapshot.child("Carbon").getValue());
+                filterChip_diet.setChecked((boolean) dataSnapshot.child("Diet").getValue());
+                filterChip_oceans.setChecked((boolean) dataSnapshot.child("Oceans").getValue());
+                filterChip_rainforest.setChecked((boolean) dataSnapshot.child("Rainforest").getValue());
+                filterChip_waste.setChecked((boolean) dataSnapshot.child("Waste").getValue());
             }
 
             @Override
@@ -83,24 +66,80 @@ public class UpdatePostActivity extends ToolbarActivity {
             }
         });
 
+        filterChip_fashion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags.setChip_fashion(true);
+                } else {
+                    tags.setChip_fashion(false);
+                }
+            }
+        });
 
-//        filterChip_fashion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    tags.setChip_fashion(true);
-//                } else {
-//                    tags.setChip_fashion(false);
-//                }
-//            }
-//        });
+        filterChip_waste.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags.setChip_waste(true);
+                } else {
+                    tags.setChip_waste(false);
+                }
+            }
+        });
+
+        filterChip_oceans.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags.setChip_oceans(true);
+                } else {
+                    tags.setChip_oceans(false);
+                }
+            }
+        });
+
+
+        filterChip_rainforest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags.setChip_rainforest(true);
+                } else {
+                    tags.setChip_rainforest(false);
+                }
+            }
+        });
+
+        filterChip_carbon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags.setChip_carbon(true);
+                } else {
+                    tags.setChip_carbon(false);
+                }
+            }
+        });
+
+
+        filterChip_diet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tags.setChip_diet(true);
+                } else {
+                    tags.setChip_diet(false);
+                }
+            }
+        });
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 postsRef.child(postId).child("body").setValue(body.getText().toString());
-//                postsRef.child(postId).child("tags").setValue(tags);
+                postsRef.child(postId).child("tags").setValue(tags);
 
                 Intent showListPostsActivity = new Intent(getApplicationContext(), ListPostsActivity.class);
                 startActivity(showListPostsActivity);
