@@ -30,6 +30,7 @@ public class CommentPostActivity extends ToolbarActivity {
         Button commentBtn = findViewById(R.id.postComment);
         TextView body = findViewById(R.id.originalPost);
         EditText comment = findViewById(R.id.Comment);
+        TextView commentPost = findViewById(R.id.commentBox);
 
         Intent intent = getIntent();
         String textBody = intent.getStringExtra(PostAdapter.POST_BODY);
@@ -51,9 +52,23 @@ public class CommentPostActivity extends ToolbarActivity {
 
 //                myRef.child(postId).child("comments").push().setValue(comment.getText().toString());
 
+//                myRef.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                        commentPost.setText((String) dataSnapshot.child("comments").child("comment").getValue());
+//
+//                    }
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
 
                     Intent showListPostsActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
                     startActivity(showListPostsActivity);
+
+
             }
         });
     }

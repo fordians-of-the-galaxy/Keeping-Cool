@@ -46,6 +46,7 @@ public class ShowPostActivity extends AppCompatActivity {
         TextView bodyText = findViewById(R.id.bodyText);
         TextView userNameText = findViewById(R.id.userNameText);
         TextView timestampText = findViewById(R.id.timestampText);
+        TextView commentPost = findViewById(R.id.commentBox);
 
         TextView fashion = findViewById(R.id.fashionText);
         TextView waste = findViewById(R.id.wasteText);
@@ -58,12 +59,15 @@ public class ShowPostActivity extends AppCompatActivity {
         final DatabaseReference userRef = db.getReference("/users");
         final DatabaseReference postRef = db.getReference("/posts/" + postId);
 
+
         postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
+
+//              commentPost.setText((String) dataSnapshot.child("comments").child("-LjfoVkrRdHq0gdWvBZN").child("comment").getValue());
 
 
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
@@ -112,6 +116,19 @@ public class ShowPostActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+//        commentRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                commentPost.setText((String) dataSnapshot.child("comment").getValue());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
+
+
 
 
         if (uid.equals(Authentication.getUID())) {
