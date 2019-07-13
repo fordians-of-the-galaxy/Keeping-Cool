@@ -17,4 +17,5 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
