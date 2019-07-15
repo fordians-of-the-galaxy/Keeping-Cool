@@ -2,6 +2,7 @@ package com.fotg.keepingcool;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.Tags;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,11 +33,13 @@ public class UpdatePostActivity extends ToolbarActivity {
 
         Button updateBtn = findViewById(R.id.postUpdate);
         EditText body = findViewById(R.id.updateBody);
-
+        EditText title = findViewById(R.id.updateTitle);
         Intent intent = getIntent();
+        String postTitle = intent.getStringExtra(PostAdapter.POST_TITLE);
         String postBody = intent.getStringExtra(PostAdapter.POST_BODY);
         String postId = intent.getStringExtra(PostAdapter.POST_ID);
         body.setText(postBody);
+        title.setText(postTitle);
         Tags tags = new Tags();
 
         Chip filterChip_fashion = findViewById(R.id.chip_fashion);
@@ -48,6 +52,30 @@ public class UpdatePostActivity extends ToolbarActivity {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference postsRef = db.getReference("/posts");
         final DatabaseReference postRef = db.getReference("/posts/" + postId + "/tags");
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.news_feed);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.tips:
+                        Intent tips_intent = new Intent(getApplicationContext(), DavidsTipsActivity.class);
+                        startActivity(tips_intent);
+//                    case R.id.useful_links:
+//                        Intent links_intent = new Intent(getApplicationContext(), UsefulLinksActivity.class);
+//                        startActivity(links_intent);
+//                    case R.id.calendar:
+//                        Intent events_intent = new Intent(getApplicationContext(), EventsActivity.class);
+//                        startActivity(events_intent);
+//                    case R.id.bindr:
+//                        Intent bindr_intent = new Intent(getApplicationContext(), BindrActivity.class);
+//                        startActivity(bindr_intent);
+                }
+                return true;
+            }
+        });
 
         postRef.addValueEventListener(new ValueEventListener() {
             @Override

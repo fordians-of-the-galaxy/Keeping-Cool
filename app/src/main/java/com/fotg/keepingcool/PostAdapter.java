@@ -36,6 +36,7 @@ public class PostAdapter extends BaseAdapter {
     String name;
 
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    public static final String POST_TITLE = "com.fotg.keepingcool.TITLE";
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_COMMENT = "com.fotg.keepingcool.COMMENT";
 
