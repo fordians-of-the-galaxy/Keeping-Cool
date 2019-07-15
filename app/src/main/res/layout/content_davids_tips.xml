@@ -12,7 +12,6 @@
             android:id="@+id/babysealBackground"
             android:layout_width="541dp"
             android:layout_height="429dp"
-            android:layout_alignStart="@+id/null"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
             android:scaleType="fitStart"

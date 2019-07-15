@@ -46,6 +46,7 @@ public class ShowPostActivity extends AppCompatActivity {
         TextView bodyText = findViewById(R.id.bodyText);
         TextView userNameText = findViewById(R.id.userNameText);
         TextView timestampText = findViewById(R.id.timestampText);
+        TextView comment = findViewById(R.id.commentBox);
 
         TextView fashion = findViewById(R.id.fashionText);
         TextView waste = findViewById(R.id.wasteText);
@@ -64,6 +65,7 @@ public class ShowPostActivity extends AppCompatActivity {
 
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
+                comment.setText((String) dataSnapshot.child("comments").child("-LjpsXJ21g-n9s-Z4zJC").child("comment").getValue());
 
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
                 Date postTimestamp = new Date(longTimestamp);
