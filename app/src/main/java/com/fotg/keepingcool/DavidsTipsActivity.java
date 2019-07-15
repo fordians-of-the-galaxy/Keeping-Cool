@@ -102,5 +102,4 @@ public class DavidsTipsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
 }
