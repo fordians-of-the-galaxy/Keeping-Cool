@@ -1,8 +1,12 @@
 package com.fotg.keepingcool;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
+import com.fotg.keepingcool.models.Comment;
+import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.User;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,20 +18,30 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+
 
 public class ShowPostActivity extends AppCompatActivity {
 
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    ListView commentView;
+    LayoutInflater mInflator;
+    ArrayList<Comment> commentList;
 
+    String[] items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +49,9 @@ public class ShowPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_post);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Resources res = getResources();
+        items = res.getStringArray(R.array.items);
 
         ImageButton deleteButton = findViewById(R.id.deleteButton);
         ImageButton editButton = findViewById(R.id.editButton);
@@ -46,7 +63,8 @@ public class ShowPostActivity extends AppCompatActivity {
         TextView bodyText = findViewById(R.id.bodyText);
         TextView userNameText = findViewById(R.id.userNameText);
         TextView timestampText = findViewById(R.id.timestampText);
-        TextView comment = findViewById(R.id.commentBox);
+
+        ListView commentView = findViewById(R.id.commentBox);
 
         TextView fashion = findViewById(R.id.fashionText);
         TextView waste = findViewById(R.id.wasteText);
@@ -55,17 +73,28 @@ public class ShowPostActivity extends AppCompatActivity {
         TextView carbon = findViewById(R.id.carbonText);
         TextView diet = findViewById(R.id.dietText);
 
+        commentList = new ArrayList<Comment>();
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference("/users");
         final DatabaseReference postRef = db.getReference("/posts/" + postId);
+        final DatabaseReference commentRef = db.getReference("/posts/" + postId + "/comments");
 
         postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+
+                mInflator = (LayoutInflater) ShowPostActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
+
+
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
-                comment.setText((String) dataSnapshot.child("comments").child("-LjpsXJ21g-n9s-Z4zJC").child("comment").getValue());
+
+//                comment.setText((String) dataSnapshot.child("comments").child("-LjpsXJ21g-n9s-Z4zJC").child("comment").getValue());
+
 
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
                 Date postTimestamp = new Date(longTimestamp);
@@ -114,6 +143,30 @@ public class ShowPostActivity extends AppCompatActivity {
             }
         });
 
+
+       commentRef.addValueEventListener(new ValueEventListener() {
+
+           @Override
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+//               commentList.clear();
+
+               for (DataSnapshot comment : dataSnapshot.getChildren()) {
+                   Comment newComment = comment.getValue(Comment.class);
+                   newComment.setCommentId(comment.getKey());
+                   commentList.add(newComment);
+               }
+
+               CommentAdapter commentAdapter = new CommentAdapter(ShowPostActivity.this, commentList);
+
+               commentView.setAdapter(commentAdapter);
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+
+           }
+       });
 
         if (uid.equals(Authentication.getUID())) {
             deleteButton.setVisibility(View.VISIBLE);
