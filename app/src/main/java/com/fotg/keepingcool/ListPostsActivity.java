@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
+import com.fotg.keepingcool.models.Comment;
 import com.fotg.keepingcool.models.Post;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +26,12 @@ public class ListPostsActivity extends ToolbarActivity {
 
     ListView postsView;
     ArrayList<Post> postList;
+    ArrayList<Comment> commentList;
+
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    public static final String POST_COMMENTID = "com.fotg.keepingcool.CID";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class ListPostsActivity extends ToolbarActivity {
         postsView = findViewById(R.id.postsView);
 
         postList = new ArrayList<Post>();
+        commentList = new ArrayList<Comment>();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference postRef = database.getReference("/posts");
@@ -53,6 +59,7 @@ public class ListPostsActivity extends ToolbarActivity {
                 String body = postList.get(i).getBody();
                 showPostActivity.putExtra(POST_ID, postID);
                 showPostActivity.putExtra(POST_BODY, body);
+
                 startActivity(showPostActivity);
             }
         });

@@ -20,6 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CommentPostActivity extends ToolbarActivity {
 
+
+    public static final String POST_COMMENTID = "com.fotg.keepingcool.CID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class CommentPostActivity extends ToolbarActivity {
         Button commentBtn = findViewById(R.id.postComment);
         TextView body = findViewById(R.id.originalPost);
         EditText comment = findViewById(R.id.Comment);
-        TextView commentPost = findViewById(R.id.commentBox);
+//        TextView commentPost = findViewById(R.id.commentBox);
 
         Intent intent = getIntent();
         String textBody = intent.getStringExtra(PostAdapter.POST_BODY);
@@ -44,26 +47,13 @@ public class CommentPostActivity extends ToolbarActivity {
 
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = db.getReference("/posts");
+//                String key = myRef.child(postId).child("comments").push().getKey();
 
                 String uid = FirebaseAuth.getInstance().getUid();
                 Comment commentObject = new Comment(uid, comment.getText().toString());
 
                 myRef.child(postId).child("comments").push().setValue(commentObject);
 
-//                myRef.child(postId).child("comments").push().setValue(comment.getText().toString());
-
-//                myRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                        commentPost.setText((String) dataSnapshot.child("comments").child("comment").getValue());
-//
-//                    }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
 
                     Intent showListPostsActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
                     startActivity(showListPostsActivity);
