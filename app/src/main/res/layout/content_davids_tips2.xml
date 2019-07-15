@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -9,13 +10,13 @@
         android:layout_height="304dp">
 
         <ImageView
-            android:id="@+id/babysealBackground"
-            android:layout_width="541dp"
-            android:layout_height="429dp"
+            android:id="@+id/offshoreWindBackground"
+            android:layout_width="623dp"
+            android:layout_height="451dp"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
             android:scaleType="fitStart"
-            android:src="@drawable/baby_seal" />
+            android:src="@drawable/offshore_wind" />
 
     </LinearLayout>
 
@@ -27,9 +28,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginEnd="63dp"
         android:layout_marginRight="63dp"
         android:layout_marginBottom="259dp"
         android:background="@color/fui_transparent"
