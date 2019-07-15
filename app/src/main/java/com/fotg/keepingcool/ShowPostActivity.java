@@ -81,7 +81,6 @@ public class ShowPostActivity extends AppCompatActivity {
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
 
-
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
                 Date postTimestamp = new Date(longTimestamp);
                 PrettyTime time_display = new PrettyTime();
