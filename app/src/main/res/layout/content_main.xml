@@ -17,7 +17,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:text="@string/login_button"
-        android:textColor="@color/colorLight"
+        android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListPostsActivity">
+    tools:context=".ListPostsActivity"
+    android:background="@drawable/gradient_background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,8 +15,9 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="match_parent"
             android:background="?attr/colorPrimary"
+            android:theme="@style/ToolbarTheme"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
@@ -31,7 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:tint="@color/colorLight"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#00c2c7"
         app:fabSize="auto"
         app:maxImageSize="30dp"
         app:srcCompat="@android:drawable/ic_input_add" />
