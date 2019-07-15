@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class ListPostsActivity extends ToolbarActivity {
     ArrayList<Post> postList;
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    Button tipsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class ListPostsActivity extends ToolbarActivity {
         setSupportActionBar(toolbar);
 
         postsView = findViewById(R.id.postsView);
+        tipsButton = findViewById(R.id.tipsButton);
 
         postList = new ArrayList<Post>();
 
@@ -89,5 +92,17 @@ public class ListPostsActivity extends ToolbarActivity {
                 startActivity(intent);
             }
         });
+
+        tipsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDavidsTips();
+            }
+        });
+    }
+
+    public void openDavidsTips() {
+        Intent intent = new Intent(this, DavidsTipsActivity.class);
+        startActivity(intent);
     }
 }

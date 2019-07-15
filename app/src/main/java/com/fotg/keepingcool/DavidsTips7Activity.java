@@ -100,3 +100,4 @@ public class DavidsTips7Activity extends AppCompatActivity {
         Intent intent = new Intent(this, DavidsTips6Activity.class);
         startActivity(intent);
     }
+}

@@ -20,6 +20,7 @@ public class DavidsTipsActivity extends AppCompatActivity {
     Button button6;
     Button button7;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,5 +102,6 @@ public class DavidsTipsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DavidsTips7Activity.class);
         startActivity(intent);
     }
+
 
 }
