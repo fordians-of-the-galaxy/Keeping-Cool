@@ -38,11 +38,12 @@ public class ShowPostActivity extends AppCompatActivity {
 
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    public static final String POST_UID = "com.fotg.keepingcool.UID";
     public static final String POST_TITLE = "com.fotg.keepingcool.TITLE";
 
-    ListView commentView;
     LayoutInflater mInflator;
     ArrayList<Comment> commentList;
+    User user;
 
 
     //Setting up database
@@ -61,10 +62,13 @@ public class ShowPostActivity extends AppCompatActivity {
 
 
         //Database functions and fetching the body from intent
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
+
+        String postId = checkPostId();
+        String uid = checkUID();
+
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
         String title = getIntent().getStringExtra(ListPostsActivity.POST_TITLE);
+
 
         //View elements
         ImageButton deleteButton = findViewById(R.id.deleteButton);
@@ -161,10 +165,10 @@ public class ShowPostActivity extends AppCompatActivity {
         });
 
         //Fetch user name from database and display it on the post
+
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user;
                 String name;
 
                 user = dataSnapshot.child(uid).getValue(User.class);
@@ -192,7 +196,7 @@ public class ShowPostActivity extends AppCompatActivity {
                }
 
                CommentAdapter commentAdapter = new CommentAdapter(ShowPostActivity.this, commentList);
-
+               System.out.println(commentList);
                commentView.setAdapter(commentAdapter);
            }
 
@@ -235,6 +239,7 @@ public class ShowPostActivity extends AppCompatActivity {
                 Intent intent = new Intent(ShowPostActivity.this, CommentPostActivity.class);
                 intent.putExtra(POST_BODY, body);
                 intent.putExtra(POST_ID, postId);
+                intent.putExtra(POST_UID, uid);
                 ShowPostActivity.this.startActivity(intent);
             }
         });
@@ -286,4 +291,21 @@ public class ShowPostActivity extends AppCompatActivity {
     private void deletePost (String id){
         postsRef.child(id).removeValue();
     }
+
+    private String checkPostId() {
+        if(getIntent().getStringExtra(ListPostsActivity.POST_ID) != null) {
+            return getIntent().getStringExtra(ListPostsActivity.POST_ID);
+        } else {
+            return getIntent().getStringExtra(CommentPostActivity.POST_ID);
+        }
+    }
+
+    private String checkUID() {
+        if(getIntent().getStringExtra(ListPostsActivity.POST_UID) != null) {
+            return getIntent().getStringExtra(ListPostsActivity.POST_UID);
+        } else {
+            return getIntent().getStringExtra(CommentPostActivity.POST_UID);
+        }
+    }
+
 }

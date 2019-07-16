@@ -22,6 +22,11 @@
             android:name=".ShowPostActivity"
             android:label="@string/title_activity_show_post"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".CommentPostActivity"
+            android:label="@string/title_activity_show_post"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdatePostActivity" />
         <activity
             android:name=".CreatePostActivity"

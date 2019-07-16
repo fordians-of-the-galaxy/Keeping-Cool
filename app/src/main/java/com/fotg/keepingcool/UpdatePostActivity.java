@@ -167,6 +167,7 @@ public class UpdatePostActivity extends ToolbarActivity {
             public void onClick(View v) {
 
                 postsRef.child(postId).child("body").setValue(body.getText().toString());
+                postsRef.child(postId).child("title").setValue(title.getText().toString());
                 postsRef.child(postId).child("tags").setValue(tags);
 
                 Intent showListPostsActivity = new Intent(getApplicationContext(), ListPostsActivity.class);
