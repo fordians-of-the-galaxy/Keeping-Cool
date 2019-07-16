@@ -4,32 +4,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-
 import com.fotg.keepingcool.models.Comment;
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.User;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
+import android.view.MenuItem;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import org.ocpsoft.prettytime.PrettyTime;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -42,6 +38,8 @@ public class ShowPostActivity extends AppCompatActivity {
 
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    public static final String POST_TITLE = "com.fotg.keepingcool.TITLE";
+
     ListView commentView;
     LayoutInflater mInflator;
     ArrayList<Comment> commentList;
@@ -50,7 +48,6 @@ public class ShowPostActivity extends AppCompatActivity {
     //Setting up database
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     final DatabaseReference postsRef = db.getReference("/posts");
-
 
 
     @Override
@@ -64,10 +61,10 @@ public class ShowPostActivity extends AppCompatActivity {
 
 
         //Database functions and fetching the body from intent
-
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
+        String title = getIntent().getStringExtra(ListPostsActivity.POST_TITLE);
 
         //View elements
         ImageButton deleteButton = findViewById(R.id.deleteButton);
@@ -79,7 +76,6 @@ public class ShowPostActivity extends AppCompatActivity {
         TextView bodyText = findViewById(R.id.bodyText);
         TextView userNameText = findViewById(R.id.userNameText);
         TextView timestampText = findViewById(R.id.timestampText);
-
 
         ListView commentView = findViewById(R.id.commentBox);
 
@@ -99,21 +95,39 @@ public class ShowPostActivity extends AppCompatActivity {
         final DatabaseReference postRef = db.getReference("/posts/" + postId);
         final DatabaseReference commentRef = db.getReference("/posts/" + postId + "/comments");
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.news_feed);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.tips:
+                        Intent tips_intent = new Intent(getApplicationContext(), DavidsTipsActivity.class);
+                        startActivity(tips_intent);
+//                    case R.id.useful_links:
+//                        Intent links_intent = new Intent(getApplicationContext(), UsefulLinksActivity.class);
+//                        startActivity(links_intent);
+//                    case R.id.calendar:
+//                        Intent events_intent = new Intent(getApplicationContext(), EventsActivity.class);
+//                        startActivity(events_intent);
+//                    case R.id.bindr:
+//                        Intent bindr_intent = new Intent(getApplicationContext(), BindrActivity.class);
+//                        startActivity(bindr_intent);
+                }
+                return true;
+            }
+        });
+
         //Display tags if they are stored as true in the database for the post
         postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
                 mInflator = (LayoutInflater) ShowPostActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
-
 
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
-
-
 
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
                 Date postTimestamp = new Date(longTimestamp);
@@ -188,7 +202,6 @@ public class ShowPostActivity extends AppCompatActivity {
            }
        });
 
-
         //User can edit or delete if it is their own post
 
         if (uid.equals(Authentication.getUID())) {
@@ -207,6 +220,7 @@ public class ShowPostActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(ShowPostActivity.this, UpdatePostActivity.class);
+                    intent.putExtra(POST_TITLE, title);
                     intent.putExtra(POST_BODY, body);
                     intent.putExtra(POST_ID, postId);
                     ShowPostActivity.this.startActivity(intent);
@@ -272,6 +286,4 @@ public class ShowPostActivity extends AppCompatActivity {
     private void deletePost (String id){
         postsRef.child(id).removeValue();
     }
-
-
 }

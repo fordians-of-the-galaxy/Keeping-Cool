@@ -23,22 +23,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-
     <include layout="@layout/content_list_posts" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:tint="#FFFFFF"
-        app:backgroundTint="#00c2c7"
-        app:fabSize="auto"
-        app:maxImageSize="30dp"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
