@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class ListPostsActivity extends ToolbarActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.news_feed);
         postsView = findViewById(R.id.postsView);
+
         postList = new ArrayList<Post>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference postRef = database.getReference("/posts");
@@ -114,4 +116,5 @@ public class ListPostsActivity extends ToolbarActivity {
             }
         });
     }
+
 }
