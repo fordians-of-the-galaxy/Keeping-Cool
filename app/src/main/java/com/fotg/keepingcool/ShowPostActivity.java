@@ -42,6 +42,8 @@ public class ShowPostActivity extends AppCompatActivity {
 
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    public static final String POST_UID = "com.fotg.keepingcool.UID";
+
     LayoutInflater mInflator;
     ArrayList<Comment> commentList;
     User user;
@@ -67,7 +69,7 @@ public class ShowPostActivity extends AppCompatActivity {
         String postId = checkPostId();
 
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
-        String uid = getIntent().getStringExtra(ListPostsActivity.POST_UID);
+        String uid = checkUID();
 
         //View elements
         ImageButton deleteButton = findViewById(R.id.deleteButton);
@@ -172,7 +174,7 @@ public class ShowPostActivity extends AppCompatActivity {
                }
 
                CommentAdapter commentAdapter = new CommentAdapter(ShowPostActivity.this, commentList);
-
+               System.out.println(commentList);
                commentView.setAdapter(commentAdapter);
            }
 
@@ -215,6 +217,7 @@ public class ShowPostActivity extends AppCompatActivity {
                 Intent intent = new Intent(ShowPostActivity.this, CommentPostActivity.class);
                 intent.putExtra(POST_BODY, body);
                 intent.putExtra(POST_ID, postId);
+                intent.putExtra(POST_UID, uid);
                 ShowPostActivity.this.startActivity(intent);
             }
         });
@@ -272,6 +275,14 @@ public class ShowPostActivity extends AppCompatActivity {
             return getIntent().getStringExtra(ListPostsActivity.POST_ID);
         } else {
             return getIntent().getStringExtra(CommentPostActivity.POST_ID);
+        }
+    }
+
+    private String checkUID() {
+        if(getIntent().getStringExtra(ListPostsActivity.POST_UID) != null) {
+            return getIntent().getStringExtra(ListPostsActivity.POST_UID);
+        } else {
+            return getIntent().getStringExtra(CommentPostActivity.POST_UID);
         }
     }
 }
