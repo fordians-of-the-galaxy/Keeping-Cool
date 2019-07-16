@@ -18,7 +18,7 @@ public class DavidsTips5Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_davids_tips);
+        setContentView(R.layout.activity_davids_tips5);
 
 
         button1 = findViewById(R.id.circleButton1);
