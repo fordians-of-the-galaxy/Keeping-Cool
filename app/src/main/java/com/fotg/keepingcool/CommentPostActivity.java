@@ -20,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CommentPostActivity extends ToolbarActivity {
 
+    public static final String POST_ID = "com.fotg.keepingcool.ID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,7 @@ public class CommentPostActivity extends ToolbarActivity {
 
 
                     Intent showListPostsActivity = new Intent(getApplicationContext(), ShowPostActivity.class);
+                    showListPostsActivity.putExtra(POST_ID, postId);
                     startActivity(showListPostsActivity);
             }
         });

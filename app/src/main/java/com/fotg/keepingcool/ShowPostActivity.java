@@ -66,7 +66,8 @@ public class ShowPostActivity extends AppCompatActivity {
         //Database functions and fetching the body from intent
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
+        String postId = checkPostId();
+
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
 
         //View elements
@@ -104,17 +105,12 @@ public class ShowPostActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
                 mInflator = (LayoutInflater) ShowPostActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
-
 
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
 
-
-
+                DataSnapshot data = dataSnapshot;
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
                 Date postTimestamp = new Date(longTimestamp);
                 PrettyTime time_display = new PrettyTime();
@@ -273,5 +269,11 @@ public class ShowPostActivity extends AppCompatActivity {
         postsRef.child(id).removeValue();
     }
 
-
+    private String checkPostId() {
+        if(getIntent().getStringExtra(ListPostsActivity.POST_ID) != null) {
+            return getIntent().getStringExtra(ListPostsActivity.POST_ID);
+        } else {
+            return getIntent().getStringExtra(CommentPostActivity.POST_ID);
+        }
+    }
 }
