@@ -8,14 +8,16 @@ import android.os.Bundle;
 import com.fotg.keepingcool.models.Comment;
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.User;
-import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -31,6 +33,9 @@ import org.ocpsoft.prettytime.PrettyTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 public class ShowPostActivity extends AppCompatActivity {
@@ -41,37 +46,51 @@ public class ShowPostActivity extends AppCompatActivity {
     LayoutInflater mInflator;
     ArrayList<Comment> commentList;
 
-    String[] items;
+
+    //Setting up database
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    final DatabaseReference postsRef = db.getReference("/posts");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_post);
+
+        //Toolbar view
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Resources res = getResources();
-        items = res.getStringArray(R.array.items);
 
-        ImageButton deleteButton = findViewById(R.id.deleteButton);
-        ImageButton editButton = findViewById(R.id.editButton);
+        //Database functions and fetching the body from intent
+
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String postId = getIntent().getStringExtra(ListPostsActivity.POST_ID);
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
+
+        //View elements
+        ImageButton deleteButton = findViewById(R.id.deleteButton);
+        ImageButton editButton = findViewById(R.id.editButton);
         Button commentButton = findViewById(R.id.commentButton);
+        ImageButton upvoteButton = findViewById(R.id.upvoteButton);
+        TextView upvotesNumber = findViewById(R.id.votesNumberText);
         TextView titleText = findViewById(R.id.titleText);
         TextView bodyText = findViewById(R.id.bodyText);
         TextView userNameText = findViewById(R.id.userNameText);
         TextView timestampText = findViewById(R.id.timestampText);
 
+
         ListView commentView = findViewById(R.id.commentBox);
 
+        //Text views for the category tags
         TextView fashion = findViewById(R.id.fashionText);
         TextView waste = findViewById(R.id.wasteText);
         TextView oceans = findViewById(R.id.oceansText);
         TextView rainforests = findViewById(R.id.rainforestsText);
         TextView carbon = findViewById(R.id.carbonText);
         TextView diet = findViewById(R.id.dietText);
+
 
         commentList = new ArrayList<Comment>();
 
@@ -80,6 +99,7 @@ public class ShowPostActivity extends AppCompatActivity {
         final DatabaseReference postRef = db.getReference("/posts/" + postId);
         final DatabaseReference commentRef = db.getReference("/posts/" + postId + "/comments");
 
+        //Display tags if they are stored as true in the database for the post
         postRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -93,7 +113,6 @@ public class ShowPostActivity extends AppCompatActivity {
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
 
-//                comment.setText((String) dataSnapshot.child("comments").child("-LjpsXJ21g-n9s-Z4zJC").child("comment").getValue());
 
 
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
@@ -127,6 +146,7 @@ public class ShowPostActivity extends AppCompatActivity {
             }
         });
 
+        //Fetch user name from database and display it on the post
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -149,7 +169,7 @@ public class ShowPostActivity extends AppCompatActivity {
            @Override
            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-//               commentList.clear();
+               commentList.clear();
 
                for (DataSnapshot comment : dataSnapshot.getChildren()) {
                    Comment newComment = comment.getValue(Comment.class);
@@ -167,6 +187,9 @@ public class ShowPostActivity extends AppCompatActivity {
 
            }
        });
+
+
+        //User can edit or delete if it is their own post
 
         if (uid.equals(Authentication.getUID())) {
             deleteButton.setVisibility(View.VISIBLE);
@@ -191,31 +214,63 @@ public class ShowPostActivity extends AppCompatActivity {
             });
         }
 
+        //User is taken to create comment activity
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ShowPostActivity.this, CommentPostActivity.class);
-//                intent.putExtra(POST_COMMENT, comment);
                 intent.putExtra(POST_BODY, body);
                 intent.putExtra(POST_ID, postId);
                 ShowPostActivity.this.startActivity(intent);
             }
         });
 
-        //        likeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                postRef.child(postId).child("numberOfLikes").setValue(numberOfLikes + 1);
-//            }
-//        });
 
-//        likesDisplay.setText(numberOfLikes + " people like this");
+        //Get list for user id's and store it in an array list
+        //Display number of votes
+        final DatabaseReference upvotesRef = db.getReference("/posts/" + postId + "/upvotes/");
+
+        Map<String, String> upvotes = new HashMap<>();
+
+        upvotesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                upvotes.clear();
+                for (DataSnapshot upvote : dataSnapshot.getChildren()) {
+                    String vote = upvote.getValue().toString();
+                    String key = upvote.getKey();
+                    upvotes.put(vote, key);
+                }
+                upvotesNumber.setText(upvotes.size() + " votes");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //Method for upvoting
+        upvoteButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                if(!upvotes.containsKey(uid)){
+                postRef.child("upvotes").push().setValue(uid);
+                } else {
+                    String voteId = upvotes.get(uid);
+                    upvotesRef.child(voteId).removeValue();
+
+                }
+
+            }
+        });
     }
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference postRef = database.getReference("/posts");
+    //Method to delete post
     private void deletePost (String id){
-        postRef.child(id).removeValue();
+        postsRef.child(id).removeValue();
     }
 
 
