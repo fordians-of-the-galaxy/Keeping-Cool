@@ -10,19 +10,8 @@ public class Post implements Serializable {
     private Date created;
     private Tags tags;
     private String uid;
-    private int numberOfLikes;
     private String postId;
     private String title;
-
-
-
-    public int getNumberOfLikes() {
-        return numberOfLikes;
-    }
-
-    public void setNumberOfLikes(int numberOfLikes) {
-        this.numberOfLikes = numberOfLikes;
-    }
 
     public void setPostId(String postId) {
         this.postId = postId;

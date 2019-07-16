@@ -4,6 +4,16 @@ public class Comment {
     private String uID;
     private String comment;
 
+    public String getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(String commentId) {
+        this.commentId = commentId;
+    }
+
+    private String commentId;
+
     public String getuID() {
         return uID;
     }
