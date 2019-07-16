@@ -9,20 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".DavidsTips7Activity"/>
+        <activity android:name=".BindrActivity"></activity>
+        <activity android:name=".DavidsTips7Activity" />
         <activity android:name=".DavidsTips6Activity" />
         <activity android:name=".DavidsTips5Activity" />
         <activity android:name=".DavidsTips4Activity" />
         <activity android:name=".DavidsTips3Activity" />
         <activity android:name=".DavidsTips2Activity" />
-
         <activity android:name=".DavidsTipsActivity" />
         <activity
             android:name=".ShowPostActivity"
             android:label="@string/title_activity_show_post"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".CommentPostActivity"
             android:label="@string/title_activity_show_post"
