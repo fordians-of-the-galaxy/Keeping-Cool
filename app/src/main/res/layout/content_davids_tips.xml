@@ -32,7 +32,6 @@
         android:layout_marginEnd="64dp"
         android:layout_marginRight="63dp"
         android:layout_marginBottom="259dp"
-        android:background="@color/fui_transparent"
-        android:src="@drawable/pinker_speech_bubble" />
+        />
 
 </RelativeLayout>
