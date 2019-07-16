@@ -42,9 +42,9 @@ public class ShowPostActivity extends AppCompatActivity {
 
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
-    ListView commentView;
     LayoutInflater mInflator;
     ArrayList<Comment> commentList;
+    User user;
 
 
     //Setting up database
@@ -64,11 +64,10 @@ public class ShowPostActivity extends AppCompatActivity {
 
 
         //Database functions and fetching the body from intent
-
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String postId = checkPostId();
 
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
+        String uid = getIntent().getStringExtra(ListPostsActivity.POST_UID);
 
         //View elements
         ImageButton deleteButton = findViewById(R.id.deleteButton);
@@ -110,7 +109,6 @@ public class ShowPostActivity extends AppCompatActivity {
                 titleText.setText((String) dataSnapshot.child("title").getValue());
                 bodyText.setText((String) dataSnapshot.child("body").getValue());
 
-                DataSnapshot data = dataSnapshot;
                 Long longTimestamp = (Long) dataSnapshot.child("time").child("time").getValue();
                 Date postTimestamp = new Date(longTimestamp);
                 PrettyTime time_display = new PrettyTime();
@@ -143,10 +141,10 @@ public class ShowPostActivity extends AppCompatActivity {
         });
 
         //Fetch user name from database and display it on the post
+
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user;
                 String name;
 
                 user = dataSnapshot.child(uid).getValue(User.class);
