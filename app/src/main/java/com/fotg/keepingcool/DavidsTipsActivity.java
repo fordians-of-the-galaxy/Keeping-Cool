@@ -26,8 +26,6 @@ public class DavidsTipsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_davids_tips);
 
-        babysealBackground = findViewById(R.id.babysealBackground);
-
         button2 = findViewById(R.id.circleButton2);
         button3 = findViewById(R.id.circleButton3);
         button4 = findViewById(R.id.circleButton4);

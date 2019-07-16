@@ -4,20 +4,24 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/activity_davids_tips3">
+    tools:showIn="@layout/activity_davids_tips6">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1000dp">
+        android:layout_height="600dp">
 
         <ImageView
-            android:id="@+id/floodingBackground"
+            android:id="@+id/reptileBackground"
             android:layout_width="600dp"
             android:layout_height="1100dp"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
-            android:src="@drawable/flooding"
-            android:translationY="-300dp" />
+            android:scaleX="1"
+            android:scaleY="1"
+            android:scaleType="center"
+            android:src="@drawable/reptiles"
+            android:translationY="-230dp"
+            android:translationX="-90dp"/>
 
     </LinearLayout>
 

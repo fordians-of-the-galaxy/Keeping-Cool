@@ -2,36 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_davids_tips">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="304dp">
+        android:layout_height="1000dp">
 
         <ImageView
-            android:id="@+id/babysealBackground"
-            android:layout_width="541dp"
-            android:layout_height="429dp"
+            android:id="@+id/walrusBackground"
+            android:layout_width="match_parent"
+            android:layout_height="735dp"
             android:adjustViewBounds="false"
             android:cropToPadding="false"
-            android:scaleType="fitStart"
-            android:src="@drawable/baby_seal" />
+            android:src="@drawable/walrus"
+            android:translationY="-185dp" />
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="281dp"
-        android:layout_height="212dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="63dp"
-        android:layout_marginBottom="259dp"
-        />
 
 </RelativeLayout>
