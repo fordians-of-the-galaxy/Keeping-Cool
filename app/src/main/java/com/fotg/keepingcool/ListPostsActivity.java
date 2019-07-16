@@ -28,7 +28,7 @@ public class ListPostsActivity extends ToolbarActivity {
     ArrayList<Post> postList;
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
-    Button tipsButton;
+    //Button tipsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ListPostsActivity extends ToolbarActivity {
         setSupportActionBar(toolbar);
 
         postsView = findViewById(R.id.postsView);
-        tipsButton = findViewById(R.id.tipsButton);
+        //tipsButton = findViewById(R.id.tipsButton);
 
         postList = new ArrayList<Post>();
 
@@ -93,16 +93,16 @@ public class ListPostsActivity extends ToolbarActivity {
             }
         });
 
-        tipsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDavidsTips();
-            }
-        });
+//        tipsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openDavidsTips();
+//            }
+//        });
     }
 
-    public void openDavidsTips() {
-        Intent intent = new Intent(this, DavidsTipsActivity.class);
-        startActivity(intent);
-    }
+//    public void openDavidsTips() {
+//        Intent intent = new Intent(this, DavidsTipsActivity.class);
+//        startActivity(intent);
+//    }
 }

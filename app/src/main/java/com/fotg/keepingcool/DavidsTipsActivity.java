@@ -12,7 +12,6 @@ import android.widget.ImageView;
 
 public class DavidsTipsActivity extends AppCompatActivity {
 
-    ImageView babysealBackground;
     Button button2;
     Button button3;
     Button button4;
