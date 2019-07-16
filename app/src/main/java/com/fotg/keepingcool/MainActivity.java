@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button loginButton = findViewById(R.id.loginButton);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 requestLogin();
             }
         });
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         requestLogin();
     }
@@ -73,4 +72,3 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
     }
 }
-

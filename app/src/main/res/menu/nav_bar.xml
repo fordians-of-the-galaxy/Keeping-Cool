@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/nav_pages"
+        android:checkableBehavior="single"
+        android:visible="true"
+        android:enabled="true" >
+        <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+        <!--android:orderInCategory="integer"-->
+
+        <item android:id="@+id/tips"
+            android:title="Tips"
+            android:titleCondensed="Tips"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            android:visible="true"
+            app:showAsAction="ifRoom" />
+            <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
+            <!--android:actionViewClass="class name"-->
+            <!--android:actionProviderClass="class name"-->
+            <!--android:alphabeticShortcut="string"-->
+            <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+            <!--android:numericShortcut="string"-->
+            <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+            <!--android:checkable=["true" | "false"]-->
+            <!--android:visible=["true" | "false"]-->
+            <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+            <!--android:orderInCategory="integer"-->
+
+        <item android:id="@+id/useful_links"
+            android:title="Links"
+            android:titleCondensed="Links"
+            android:icon="@drawable/ic_link_black_24dp"
+            app:showAsAction="ifRoom" />
+        <!--android:onClick="method name"-->
+        <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
+        <!--android:actionViewClass="class name"-->
+        <!--android:actionProviderClass="class name"-->
+        <!--android:alphabeticShortcut="string"-->
+        <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+        <!--android:numericShortcut="string"-->
+        <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+        <!--android:checkable=["true" | "false"]-->
+        <!--android:visible=["true" | "false"]-->
+        <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+        <!--android:orderInCategory="integer"-->
+
+        <item android:id="@+id/news_feed"
+            android:title="Feed"
+            android:titleCondensed="Feed"
+            android:icon="@drawable/ic_chat_bubble_black_24dp"
+            android:visible="true"
+            app:showAsAction="ifRoom" />
+            <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
+            <!--android:actionViewClass="class name"-->
+            <!--android:actionProviderClass="class name"-->
+            <!--android:alphabeticShortcut="string"-->
+            <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+            <!--android:numericShortcut="string"-->
+            <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+            <!--android:checkable=["true" | "false"]-->
+            <!--android:visible=["true" | "false"]-->
+            <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+            <!--android:orderInCategory="integer"-->
+
+        <item android:id="@+id/events"
+            android:title="Events"
+            android:titleCondensed="Events"
+            android:icon="@drawable/ic_event_black_24dp"
+            app:showAsAction="ifRoom" />
+        <!--android:onClick="method name"-->
+            <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
+            <!--android:actionViewClass="class name"-->
+            <!--android:actionProviderClass="class name"-->
+            <!--android:alphabeticShortcut="string"-->
+            <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+            <!--android:numericShortcut="string"-->
+            <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+            <!--android:checkable=["true" | "false"]-->
+            <!--android:visible=["true" | "false"]-->
+            <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+            <!--android:orderInCategory="integer"-->
+
+        <item android:id="@+id/bindr"
+            android:title="Bindr"
+            android:titleCondensed="Bindr"
+            android:icon="@drawable/ic_delete_black_24dp"
+            app:showAsAction="ifRoom" />
+        <!--android:onClick="method name"-->
+        <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
+        <!--android:actionViewClass="class name"-->
+        <!--android:actionProviderClass="class name"-->
+        <!--android:alphabeticShortcut="string"-->
+        <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+        <!--android:numericShortcut="string"-->
+        <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+        <!--android:checkable=["true" | "false"]-->
+        <!--android:visible=["true" | "false"]-->
+        <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+        <!--android:orderInCategory="integer"-->
+    </group>
+</menu>
