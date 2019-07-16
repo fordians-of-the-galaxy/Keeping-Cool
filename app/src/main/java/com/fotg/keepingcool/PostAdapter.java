@@ -58,6 +58,7 @@ public class PostAdapter extends BaseAdapter {
     public View getView ( int position, View convertView, ViewGroup parent){
         View v = mInflator.inflate(R.layout.content_list_post_view, null);
 
+
         TextView timeTextView = v.findViewById(R.id.timeView);
         TextView bodyTextView = v.findViewById(R.id.bodyView);
         TextView usernameTextView = v.findViewById(R.id.usernameView);
@@ -153,6 +154,7 @@ public class PostAdapter extends BaseAdapter {
             }
         });
         return v;
+
     }
 
 

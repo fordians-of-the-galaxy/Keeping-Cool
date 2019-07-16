@@ -23,5 +23,13 @@
     <string name="chip_rainforests">Rainforests</string>
     <string name="chip_carbon">Carbon</string>
     <string name="chip_diet">Diet</string>
+
+    <string-array name="items">
+        <item>Avocado</item>
+        <item>Tomato</item>
+        <item>Spinach</item>
+        <item>Mushroom</item>
+    </string-array>
+
 </resources>
 
