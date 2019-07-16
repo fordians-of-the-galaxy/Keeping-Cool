@@ -1,7 +1,6 @@
 package com.fotg.keepingcool;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.User;
-import com.google.android.material.chip.Chip;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.ocpsoft.prettytime.PrettyTime;
-import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,9 +61,9 @@ public class PostAdapter extends BaseAdapter {
         TextView timeTextView = v.findViewById(R.id.timeView);
         TextView bodyTextView = v.findViewById(R.id.bodyView);
         TextView usernameTextView = v.findViewById(R.id.usernameView);
-        TextView likesDisplay = v.findViewById(R.id.upvotesText);
-        TextView titleTextView = v.findViewById(R.id.titleTextView);
 
+        TextView titleTextView = v.findViewById(R.id.titleTextView);
+        TextView votesDisplay = v.findViewById(R.id.upvotesText);
         TextView fashion = v.findViewById(R.id.fashionText);
         TextView waste = v.findViewById(R.id.wasteText);
         TextView oceans = v.findViewById(R.id.oceansText);
@@ -80,7 +76,6 @@ public class PostAdapter extends BaseAdapter {
         String uid = posts.get(position).getUid();
         String title = posts.get(position).getTitle();
         String postId = posts.get(position).getPostId();
-        int numberOfLikes = posts.get(position).getNumberOfLikes();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference postsRef = db.getReference("/posts");
@@ -116,6 +111,24 @@ public class PostAdapter extends BaseAdapter {
 
             }
         });
+        final DatabaseReference upvotesRef = db.getReference("/posts/" + postId + "/upvotes/");
+        ArrayList<String> upvotes = new ArrayList<>();
+        upvotesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                upvotes.clear();
+                for (DataSnapshot upvote : dataSnapshot.getChildren()) {
+                    String vote = upvote.getValue().toString();
+                    upvotes.add(vote);
+                }
+                votesDisplay.setText(upvotes.size() + " votes");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
         PrettyTime time_display = new PrettyTime();
@@ -123,6 +136,9 @@ public class PostAdapter extends BaseAdapter {
         timeTextView.setText(time_display.format(time));
         bodyTextView.setText(body);
         titleTextView.setText(title);
+
+
+
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
