@@ -2,16 +2,19 @@ package com.fotg.keepingcool;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import com.fotg.keepingcool.models.Post;
 import com.fotg.keepingcool.models.Tags;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +50,30 @@ public class CreatePostActivity extends ToolbarActivity {
         final DatabaseReference postRef = database.getReference("/posts");
         String key = postRef.child("posts").push().getKey();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.news_feed);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.tips:
+                        Intent tips_intent = new Intent(getApplicationContext(), DavidsTipsActivity.class);
+                        startActivity(tips_intent);
+//                    case R.id.useful_links:
+//                        Intent links_intent = new Intent(getApplicationContext(), UsefulLinksActivity.class);
+//                        startActivity(links_intent);
+//                    case R.id.calendar:
+//                        Intent events_intent = new Intent(getApplicationContext(), EventsActivity.class);
+//                        startActivity(events_intent);
+//                    case R.id.bindr:
+//                        Intent bindr_intent = new Intent(getApplicationContext(), BindrActivity.class);
+//                        startActivity(bindr_intent);
+                }
+                return true;
+            }
+        });
 
         filterChip_fashion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

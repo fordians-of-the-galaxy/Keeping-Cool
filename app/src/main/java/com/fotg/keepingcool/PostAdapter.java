@@ -32,6 +32,7 @@ public class PostAdapter extends BaseAdapter {
     String name;
 
     public static final String POST_BODY = "com.fotg.keepingcool.BODY";
+    public static final String POST_TITLE = "com.fotg.keepingcool.TITLE";
     public static final String POST_ID = "com.fotg.keepingcool.ID";
     public static final String POST_COMMENT = "com.fotg.keepingcool.COMMENT";
 
@@ -57,6 +58,7 @@ public class PostAdapter extends BaseAdapter {
     @Override
     public View getView ( int position, View convertView, ViewGroup parent){
         View v = mInflator.inflate(R.layout.content_list_post_view, null);
+
 
         TextView timeTextView = v.findViewById(R.id.timeView);
         TextView bodyTextView = v.findViewById(R.id.bodyView);
@@ -153,6 +155,7 @@ public class PostAdapter extends BaseAdapter {
             }
         });
         return v;
+
     }
 
 
