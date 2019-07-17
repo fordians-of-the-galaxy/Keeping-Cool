@@ -19,15 +19,8 @@ public class ToolbarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_messenger) {
-            Intent intent = getPackageManager().getLaunchIntentForPackage("com.facebook.orca");
-            try {
-                startActivity(intent);
-            }
-            catch (android.content.ActivityNotFoundException ex){
-                Toast.makeText(getApplicationContext(), "Please Install Facebook Messenger", Toast.LENGTH_LONG).show();
-            }
-        } else if (id == R.id.action_logout) {
+
+        if (id == R.id.action_logout) {
             Authentication.requestLogout(this);
         }
 

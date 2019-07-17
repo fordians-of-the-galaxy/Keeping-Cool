@@ -20,7 +20,7 @@ public class Authentication {
                 new AuthUI.IdpConfig.EmailBuilder().build()
         );
 
-        Intent loginIntent = AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).build();
+        Intent loginIntent = AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).setTheme(R.style.FunkyTheme).build();
         return loginIntent;
     }
 
