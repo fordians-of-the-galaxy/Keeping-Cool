@@ -89,43 +89,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backgroundImage">
 
-        <!--<EditText-->
-            <!--android:id="@+id/emailText"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:ems="10"-->
-            <!--android:filterTouchesWhenObscured="false"-->
-            <!--android:hint="example@email.co.uk"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:maxLength="100"-->
-            <!--android:textColorHighlight="#005582"-->
-            <!--android:textColorLink="#005582"-->
-            <!--android:textSize="16dp"-->
-            <!--app:layout_constraintHorizontal_bias="0.0" />-->
-
-        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--android:id="@+id/fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|start"-->
-        <!--android:background="#97ebdb"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
-
-        <!--<Button-->
-        <!--android:id="@+id/loginButton"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:background="@color/colorAccent"-->
-        <!--android:text="@string/login_button"-->
-        <!--android:textColor="#FFF"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
         <Button
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
@@ -135,7 +98,7 @@
             android:layout_marginRight="270dp"
             android:background="#97ebdb"
             android:text="Login"
-            android:textColor="#005582"
+            android:textColor="#FFFFFF"
             android:textColorLink="#005582"
             android:textSize="16dp" />
 
