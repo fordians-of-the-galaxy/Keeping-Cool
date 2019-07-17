@@ -11,6 +11,7 @@ import com.fotg.keepingcool.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,6 +67,8 @@ public class ShowPostActivity extends AppCompatActivity {
 
         String postId = checkPostId();
         String uid = checkUID();
+        String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        System.out.println(currentUser);
 
         String body = getIntent().getStringExtra(ListPostsActivity.POST_BODY);
         String title = getIntent().getStringExtra(ListPostsActivity.POST_TITLE);
@@ -265,11 +268,14 @@ public class ShowPostActivity extends AppCompatActivity {
                     String key = upvote.getKey();
                     upvotes.put(vote, key);
                 }
-                if(upvotes.containsKey(uid)) {
+
+                if(upvotes.containsKey(currentUser)) {
                     upvoteButton.setColorFilter(Color.parseColor("#00c2c7"));
                 } else {
                     upvoteButton.setColorFilter(Color.BLACK);
-                }if(upvotes.size() == 1) {
+                }
+
+                if(upvotes.size() == 1) {
                     upvotesNumber.setText(upvotes.size() + " vote");
                 } else {
                     upvotesNumber.setText(upvotes.size() + " votes");
@@ -289,12 +295,11 @@ public class ShowPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(!upvotes.containsKey(uid)){
-                postRef.child("upvotes").push().setValue(uid);
+                if(!upvotes.containsKey(currentUser)){
+                postRef.child("upvotes").push().setValue(currentUser);
                 } else {
-                    String voteId = upvotes.get(uid);
+                    String voteId = upvotes.get(currentUser);
                     upvotesRef.child(voteId).removeValue();
-
                 }
 
             }
