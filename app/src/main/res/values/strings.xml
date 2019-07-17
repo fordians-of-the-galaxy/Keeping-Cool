@@ -23,6 +23,12 @@
     <string name="chip_rainforests">Rainforests</string>
     <string name="chip_carbon">Carbon</string>
     <string name="chip_diet">Diet</string>
+    <string name="personalDetails">Personal Details:</string>
+    <string name="firstNameHint">First Name</string>
+    <string name="lastNameHint">Last Name</string>
+    <string name="displayNameHint">Display Name</string>
+    <string name="aboutMeHint">About Me</string>
+    <string name="saveProfile">Save</string>
 
     <string-array name="items">
         <item>Avocado</item>
