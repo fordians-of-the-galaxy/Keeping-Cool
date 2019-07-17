@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".BindrActivity"></activity>
         <activity android:name=".DavidsTips7Activity" />
         <activity android:name=".DavidsTips6Activity" />
         <activity android:name=".DavidsTips5Activity" />
