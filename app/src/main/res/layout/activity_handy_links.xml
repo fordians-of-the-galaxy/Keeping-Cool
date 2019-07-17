@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DavidsTips5Activity">
+    tools:context=".HandyLinksActivity">
 
-    <include layout="@layout/content_davids_tips5" />
+    <include layout="@layout/content_handy_links" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
