@@ -63,28 +63,28 @@
             <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
             <!--android:orderInCategory="integer"-->
 
-        <item android:id="@+id/events"
-            android:title="Events"
-            android:titleCondensed="Events"
-            android:icon="@drawable/ic_event_black_24dp"
-            app:showAsAction="ifRoom" />
-        <!--android:onClick="method name"-->
-            <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
-            <!--android:actionViewClass="class name"-->
-            <!--android:actionProviderClass="class name"-->
-            <!--android:alphabeticShortcut="string"-->
-            <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
-            <!--android:numericShortcut="string"-->
-            <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
-            <!--android:checkable=["true" | "false"]-->
-            <!--android:visible=["true" | "false"]-->
-            <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
-            <!--android:orderInCategory="integer"-->
-
         <item android:id="@+id/bindr"
             android:title="Bindr"
             android:titleCondensed="Bindr"
             android:icon="@drawable/ic_delete_black_24dp"
+            app:showAsAction="ifRoom" />
+        <!--android:onClick="method name"-->
+        <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
+        <!--android:actionViewClass="class name"-->
+        <!--android:actionProviderClass="class name"-->
+        <!--android:alphabeticShortcut="string"-->
+        <!--android:alphabeticModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+        <!--android:numericShortcut="string"-->
+        <!--android:numericModifiers=["META" | "CTRL" | "ALT" | "SHIFT" | "SYM" | "FUNCTION"]-->
+        <!--android:checkable=["true" | "false"]-->
+        <!--android:visible=["true" | "false"]-->
+        <!--android:menuCategory=["container" | "system" | "secondary" | "alternative"]-->
+        <!--android:orderInCategory="integer"-->
+
+        <item android:id="@+id/profile"
+            android:title="Profile"
+            android:titleCondensed="Profile"
+            android:icon="@drawable/ic_person_black_24dp"
             app:showAsAction="ifRoom" />
         <!--android:onClick="method name"-->
         <!--android:actionLayout="@[package:]layout/layout_resource_name"-->
