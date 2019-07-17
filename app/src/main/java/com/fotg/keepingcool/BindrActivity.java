@@ -36,13 +36,13 @@ public class BindrActivity extends AppCompatActivity {
                         Intent feed_intent = new Intent(getApplicationContext(), ListPostsActivity.class);
                         startActivity(feed_intent);
                         break;
-//                    case R.id.useful_links:
-//                        Intent links_intent = new Intent(getApplicationContext(), UsefulLinksActivity.class);
-//                        startActivity(links_intent);
-//                        break;
                     case R.id.profile:
                         Intent profile_intent = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(profile_intent);
+                        break;
+                    case R.id.useful_links:
+                        Intent links_intent = new Intent(getApplicationContext(), HandyLinksActivity.class);
+                        startActivity(links_intent);
                         break;
                     case R.id.tips:
                         Intent tips_intent = new Intent(getApplicationContext(), DavidsTipsActivity.class);

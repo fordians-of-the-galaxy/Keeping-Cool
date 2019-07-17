@@ -4,7 +4,12 @@ package com.fotg.keepingcool;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -22,6 +27,10 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private static int RC_SIGN_IN = 1;
+    ImageView backgroundImage, fishImage;
+    TextView exploreText;
+    LinearLayout textSplash, emailLayout;
+    Animation frombottom, emailAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
+        emailAnim = AnimationUtils.loadAnimation(this, R.anim.email_anim);
+
+        backgroundImage = findViewById(R.id.backgroundImage);
+        fishImage = findViewById(R.id.fishImage);
+        textSplash = (LinearLayout) findViewById(R.id.textSplash);
+        exploreText = findViewById(R.id.exploreText);
+        emailLayout = (LinearLayout) findViewById(R.id.emailLayout);
+
+        backgroundImage.animate().translationY(-1330).setDuration(800).setStartDelay(800);
+        fishImage.animate().translationX(1330).setDuration(800).setStartDelay(500);
+        textSplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(800);
+        exploreText.startAnimation(frombottom);
+        emailLayout.startAnimation(emailAnim);
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +63,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        requestLogin();
+//        private void requestLogin() {
+//            startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
+//        }
+
+//        requestLogin();
+//    }
+
+}
+
+    private void requestLogin() {
+        startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
+
     }
 
     @Override
@@ -66,9 +101,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
-    }
-
-    private void requestLogin() {
-        startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
     }
 }

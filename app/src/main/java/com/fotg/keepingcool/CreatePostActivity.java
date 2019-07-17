@@ -62,13 +62,13 @@ public class CreatePostActivity extends ToolbarActivity {
                         Intent tips_intent = new Intent(getApplicationContext(), DavidsTipsActivity.class);
                         startActivity(tips_intent);
                         break;
-//                    case R.id.useful_links:
-//                        Intent links_intent = new Intent(getApplicationContext(), UsefulLinksActivity.class);
-//                        startActivity(links_intent);
-//                        break;
                     case R.id.profile:
                         Intent profile_intent = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(profile_intent);
+                        break;
+                    case R.id.useful_links:
+                        Intent links_intent = new Intent(getApplicationContext(), HandyLinksActivity.class);
+                        startActivity(links_intent);
                         break;
                     case R.id.bindr:
                         Intent bindr_intent = new Intent(getApplicationContext(), BindrActivity.class);
