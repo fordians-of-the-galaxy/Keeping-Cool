@@ -63,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        private void requestLogin() {
-//            startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
-//        }
-
-//        requestLogin();
-//    }
 }
 
     private void requestLogin() {

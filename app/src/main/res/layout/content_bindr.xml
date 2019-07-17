@@ -54,7 +54,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textColor="#FFFFFF"
-        android:text="Find a recycling bin near you!"
+        android:text="Tap the map to find a recycling bin near you!"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
