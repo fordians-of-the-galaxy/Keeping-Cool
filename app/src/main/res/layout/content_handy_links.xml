@@ -22,7 +22,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="64dp"
-        android:src="@drawable/Extinction"
+        app:srcCompat="@drawable/extinction"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,18 +33,18 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
-        android:src="@drawable/WWF"
+        app:srcCompat="@drawable/wwf"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ourPlanet"
+        android:id="@+id/ourplanet"
         android:layout_width="136dp"
         android:layout_height="131dp"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="64dp"
-        android:src="@drawable/ourPlanet"
+        app:srcCompat="@drawable/ourplanet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/extinction" />
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
-        android:src="@drawable/greenpeace"
+        app:srcCompat="@drawable/greenpeace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wwf" />
 
@@ -66,20 +66,34 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="64dp"
-        android:src="@drawable/oxfam"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ourPlanet" />
+        app:layout_constraintTop_toBottomOf="@+id/ourplanet"
+        app:srcCompat="@drawable/oxfam" />
 
     <ImageView
-        android:id="@+id/veganKind"
+        android:id="@+id/vegankind"
         android:layout_width="126dp"
         android:layout_height="135dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
-        android:src="@drawable/veganKind"
+        android:src="@drawable/vegankind"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greenpeace" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:text="Click our links above to save the planet!"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
