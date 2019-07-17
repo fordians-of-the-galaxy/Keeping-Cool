@@ -3,6 +3,7 @@ package com.fotg.keepingcool;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import com.fotg.keepingcool.models.Comment;
 import com.fotg.keepingcool.models.Post;
@@ -260,7 +261,16 @@ public class ShowPostActivity extends AppCompatActivity {
                     String key = upvote.getKey();
                     upvotes.put(vote, key);
                 }
-                upvotesNumber.setText(upvotes.size() + " votes");
+                if(upvotes.containsKey(uid)) {
+                    upvoteButton.setColorFilter(Color.parseColor("#00c2c7"));
+                } else {
+                    upvoteButton.setColorFilter(Color.BLACK);
+                }if(upvotes.size() == 1) {
+                    upvotesNumber.setText(upvotes.size() + " vote");
+                } else {
+                    upvotesNumber.setText(upvotes.size() + " votes");
+                }
+
             }
 
             @Override
