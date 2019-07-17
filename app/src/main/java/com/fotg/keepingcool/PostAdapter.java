@@ -123,7 +123,12 @@ public class PostAdapter extends BaseAdapter {
                     String vote = upvote.getValue().toString();
                     upvotes.add(vote);
                 }
-                votesDisplay.setText(upvotes.size() + " votes");
+
+                if(upvotes.size() == 1) {
+                    votesDisplay.setText(upvotes.size() + " vote");
+                } else {
+                    votesDisplay.setText(upvotes.size() + " votes");
+                }
             }
 
             @Override
