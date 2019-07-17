@@ -265,8 +265,11 @@ public class ShowPostActivity extends AppCompatActivity {
                     upvoteButton.setColorFilter(Color.parseColor("#00c2c7"));
                 } else {
                     upvoteButton.setColorFilter(Color.BLACK);
+                }if(upvotes.size() == 1) {
+                    upvotesNumber.setText(upvotes.size() + " vote");
+                } else {
+                    upvotesNumber.setText(upvotes.size() + " votes");
                 }
-                upvotesNumber.setText(upvotes.size() + " votes");
 
             }
 
