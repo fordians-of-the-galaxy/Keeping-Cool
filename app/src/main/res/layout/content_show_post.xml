@@ -302,11 +302,11 @@
 
     <TextView
         android:id="@+id/userComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="94dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:visibility="gone"
