@@ -8,28 +8,126 @@
     tools:context=".MainActivity"
     android:background="@drawable/gradient_background">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <include layout="@layout/content_main" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <LinearLayout
+        android:id="@+id/textSplash"
+        android:gravity="center"
+        android:elevation="10dp"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_editor_absoluteY="300dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        app:layout_constraintTop_toTopOf="@+id/backgroundImage"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImage">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:textColor="#FFF"
+            android:textSize="26sp" />
+
+        <TextView
+            android:textSize="20sp"
+            android:textColor="#FFF"
+            android:text="Learn. Explore. Share."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/textHome"
+        android:gravity="left"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_editor_absoluteY="302dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="310dp"
+        android:layout_marginEnd="310dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="650dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/exploreText"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:text="Keeping Cool"
+            android:textColor="#FFF"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="30dp"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/textSplash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backgroundImage">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="270dp"
+            android:layout_marginRight="270dp"
+            android:background="#97ebdb"
+            android:text="Login"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#005582"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:elevation="6dp"
+        android:layout_marginLeft="130dp"
+        android:src="@drawable/fish1"
+        android:layout_width="365dp"
+        android:layout_height="726dp"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="fitCenter" android:adjustViewBounds="false" android:cropToPadding="false"
+        android:scaleX="0.5" android:scaleY="0.5" android:rotation="45"
+        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundImage" android:layout_marginTop="100dp"
+        android:layout_marginStart="130dp" android:id="@+id/fishImage"/>
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgroundapp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
