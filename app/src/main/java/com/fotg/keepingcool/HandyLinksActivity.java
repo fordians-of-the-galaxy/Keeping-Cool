@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +28,8 @@ public class HandyLinksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handy_links);
 
+        Animation imageClick = AnimationUtils.loadAnimation(this, R.anim.image_click);
+
 
         oxfam = findViewById(R.id.oxfam);
         veganKind = findViewById(R.id.vegankind);
@@ -33,6 +37,7 @@ public class HandyLinksActivity extends AppCompatActivity {
         wwf = findViewById(R.id.wwf);
         greenpeace = findViewById(R.id.greenpeace);
         ourplanet = findViewById(R.id.ourplanet);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.useful_links);
@@ -45,12 +50,10 @@ public class HandyLinksActivity extends AppCompatActivity {
                         Intent feed_intent = new Intent(getApplicationContext(), ListPostsActivity.class);
                         startActivity(feed_intent);
                         break;
-//                    case R.id.useful_links:
-//                        Intent links_intent = new Intent(getApplicationContext(), UsefulLinksActivity.class);
-//                        startActivity(links_intent);
-//                    case R.id.calendar:
-//                        Intent events_intent = new Intent(getApplicationContext(), EventsActivity.class);
-//                        startActivity(events_intent);
+                    case R.id.profile:
+                        Intent profile_intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(profile_intent);
+                        break;
                     case R.id.bindr:
                         Intent bindr_intent = new Intent(getApplicationContext(), BindrActivity.class);
                         startActivity(bindr_intent);
@@ -68,6 +71,8 @@ public class HandyLinksActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                oxfam.startAnimation(imageClick);
+
                 Uri uri = Uri.parse("https://www.oxfam.org.uk/what-we-do/issues-we-work-on/climate-change");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -78,6 +83,7 @@ public class HandyLinksActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                veganKind.startAnimation(imageClick);
                 Uri uri = Uri.parse("https://www.thevegankind.com/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -88,6 +94,7 @@ public class HandyLinksActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                extinction.startAnimation(imageClick);
                 Uri uri = Uri.parse("https://rebellion.earth//");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -97,7 +104,7 @@ public class HandyLinksActivity extends AppCompatActivity {
         wwf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                wwf.startAnimation(imageClick);
                 Uri uri = Uri.parse("https://www.wwf.org.uk//");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -108,6 +115,7 @@ public class HandyLinksActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                greenpeace.startAnimation(imageClick);
                 Uri uri = Uri.parse("https://www.greenpeace.org.uk//");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -117,6 +125,8 @@ public class HandyLinksActivity extends AppCompatActivity {
         ourplanet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ourplanet.startAnimation(imageClick);
 
                 Uri uri = Uri.parse("https://www.ourplanet.com/en/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);

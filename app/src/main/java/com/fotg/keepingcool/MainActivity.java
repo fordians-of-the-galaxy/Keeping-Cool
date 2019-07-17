@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         exploreText = findViewById(R.id.exploreText);
         emailLayout = (LinearLayout) findViewById(R.id.emailLayout);
 
-        backgroundImage.animate().translationY(-1330).setDuration(800).setStartDelay(800);
+        backgroundImage.animate().translationY(-1830).setDuration(800).setStartDelay(800);
         fishImage.animate().translationX(1330).setDuration(800).setStartDelay(500);
         textSplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(800);
         exploreText.startAnimation(frombottom);
@@ -62,13 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 requestLogin();
             }
         });
-
-//        private void requestLogin() {
-//            startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
-//        }
-
-//        requestLogin();
-//    }
 
 }
 

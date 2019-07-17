@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -22,6 +24,8 @@ public class BindrActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bindr);
+
+        Animation imageClick = AnimationUtils.loadAnimation(this, R.anim.image_click);
 
         bindrMap = findViewById(R.id.bindrMap);
 
@@ -56,6 +60,8 @@ public class BindrActivity extends AppCompatActivity {
         bindrMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                bindrMap.startAnimation(imageClick);
 
                 Uri uri = Uri.parse("https://bindoctor.herokuapp.com/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
