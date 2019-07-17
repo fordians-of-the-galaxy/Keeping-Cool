@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         exploreText = findViewById(R.id.exploreText);
         emailLayout = (LinearLayout) findViewById(R.id.emailLayout);
 
-        backgroundImage.animate().translationY(-1330).setDuration(800).setStartDelay(500);
-        fishImage.animate().translationX(1330).setDuration(800).setStartDelay(700);
-        textSplash.animate().translationY(140).alpha(0).setDuration(1000).setStartDelay(500);
+        backgroundImage.animate().translationY(-1330).setDuration(800).setStartDelay(800);
+        fishImage.animate().translationX(1330).setDuration(800).setStartDelay(500);
+        textSplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(800);
         exploreText.startAnimation(frombottom);
         emailLayout.startAnimation(emailAnim);
 
@@ -63,7 +63,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        requestLogin();
+//        private void requestLogin() {
+//            startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
+//        }
+
+//        requestLogin();
+//    }
+
+}
+
+    private void requestLogin() {
+        startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
+
     }
 
     @Override
@@ -90,9 +101,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
-    }
-
-    private void requestLogin() {
-        startActivityForResult(Authentication.requestLoginIntent(), RC_SIGN_IN);
     }
 }
