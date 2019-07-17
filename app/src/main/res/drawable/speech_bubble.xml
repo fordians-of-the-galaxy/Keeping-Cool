@@ -18,7 +18,6 @@
     <solid
         android:color="#ffae6c"></solid>
 
-
     <size
         android:width="82dp"
         android:height="82dp" />
