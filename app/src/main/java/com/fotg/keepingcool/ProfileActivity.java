@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         EditText firstName = findViewById(R.id.editFirstName);
         EditText lastName = findViewById(R.id.editLastName);
-        EditText displayName = findViewById(R.id.editDisplayName);
+//        EditText displayName = findViewById(R.id.editDisplayName);
         EditText aboutMe = findViewById(R.id.editAboutMe);
 
         Button saveButton = findViewById(R.id.saveProfile);
@@ -67,26 +67,23 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user;
-                String name;
-                String fName;
-                String lName;
-                String aMe;
-
-                user = dataSnapshot.child(uid).getValue(User.class);
-
-                name = user.getName();
-
-                displayName.setText(name);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+//        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                User user;
+//                String name;
+//
+//                user = dataSnapshot.child(uid).getValue(User.class);
+//
+//                name = user.getName();
+//
+//                displayName.setText(name);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
 
         profileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,10 +114,13 @@ public class ProfileActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                profileRef.child(uid).child("name").setValue(displayName.getText().toString());
+//                profileRef.child(uid).child("name").setValue(displayName.getText().toString());
                 profileRef.child(uid).child("First Name").setValue(firstName.getText().toString());
                 profileRef.child(uid).child("Last Name").setValue(lastName.getText().toString());
                 profileRef.child(uid).child("About Me").setValue(aboutMe.getText().toString());
+
+                Intent showListPostsActivity = new Intent(getApplicationContext(), ListPostsActivity.class);
+                startActivity(showListPostsActivity);
             }
         });
 
